@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,11 +11,14 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using Image = System.Drawing.Image;
 
 namespace ComputerDIY
 {
     public partial class Form1 : Form
     {
+        Jack context = new Jack();
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +42,7 @@ namespace ComputerDIY
         //private void button1_Click(object sender, EventArgs e)
         //{
         //    string url = "https://www.jib.co.th/web/product/readProduct/" + textBox1.Text;
+        //    https://www.jib.co.th/web/product/product_list/2/43
         //    HtmlWeb web = new HtmlWeb();
         //    HtmlAgilityPack.HtmlDocument doc = web.Load(url);
         //    var html = doc.DocumentNode.Descendants("meta");
@@ -64,7 +69,7 @@ namespace ComputerDIY
 
             var numberOfPage = doc.DocumentNode.SelectNodes("//div[@class=\"col-md-6 col-sm-6 pad-0\"]//span");
             textBox6.Text = numberOfPage[1].InnerText;
-
+            // type
             var typeOfProduct = doc.DocumentNode.SelectNodes("//span[@class=\"en\"]");
             textBox7.Text = typeOfProduct[1].InnerText;
 
@@ -86,7 +91,7 @@ namespace ComputerDIY
         private void button3_Click(object sender, EventArgs e)
         {
             int codepage = 0;
-              int count = 0;
+            int count = 0;
             while (true)
             {
                 string url = textBox5.Text+"/"+codepage;
@@ -117,22 +122,96 @@ namespace ComputerDIY
         {
             //Console.WriteLine(listView1.SelectedItems[0].Text);
             textBox1.Text = listView1.SelectedItems[0].Text;
+            // id
             string url = "https://www.jib.co.th/web/product/readProduct/" + textBox1.Text;
             HtmlWeb web = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load(url);
             var html = doc.DocumentNode.Descendants("meta");
+            // name
             var title = html.Where(m => m.GetAttributeValue("property", "") == "og:title").First();
             textBox2.Text = title.GetAttributeValue("content", "");
+            // detial
             var description = html.Where(m => m.GetAttributeValue("property", "") == "og:description").First();
             textBox3.Text = description.GetAttributeValue("content", "");
+            // image
             var image = html.Where(m => m.GetAttributeValue("property", "") == "og:image").First();
+            //string i = image.GetAttributeValue("content", "");
+            //Console.WriteLine(i);
             pictureBox1.Image = LoadImage(image.GetAttributeValue("content", ""));
-
+            // price
             var priceblock = doc.DocumentNode.Descendants("div");
             var price = priceblock.Where(p => p.GetAttributeValue("class", "") == "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center price_block").
                 First().InnerText;
             price = new string(price.Where(c => char.IsDigit(c)).ToArray());
             textBox4.Text = price;
+            //var type = doc.DocumentNode.SelectNodes("//div[@class=\"step_nav\"]//a");
+            //textBox8.Text = type[2].InnerText;
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int codepage = 0;
+            int count = 0;
+            while (true)
+            {
+                string url = textBox5.Text + "/" + codepage;
+                //Console.WriteLine(url);
+                HtmlWeb web = new HtmlWeb();
+                HtmlAgilityPack.HtmlDocument doc = web.Load(url);
+                var titleNode = doc.DocumentNode.SelectNodes("//div[@class=\"cart_modal buy_promo\"]");
+                if (titleNode == null)
+                {
+                    break;
+                }
+                foreach (HtmlNode node in titleNode)
+                {
+                    P_Product product = new P_Product();
+                    string productId = node.Attributes["data-id"].Value;
+                    Console.WriteLine(productId);
+                    string url2 = "https://www.jib.co.th/web/product/readProduct/" + productId;
+                    HtmlWeb web2 = new HtmlWeb();
+                    HtmlAgilityPack.HtmlDocument doc2 = web2.Load(url2);
+                    var html = doc2.DocumentNode.Descendants("meta");
+                    var title = html.Where(m => m.GetAttributeValue("property", "") == "og:title").First();
+                    var description = html.Where(m => m.GetAttributeValue("property", "") == "og:description").First();
+                    var priceblock = doc2.DocumentNode.Descendants("div");
+                    var price = priceblock.Where(p => p.GetAttributeValue("class", "") == "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center price_block").
+                        First().InnerText;
+                    price = new string(price.Where(c => char.IsDigit(c)).ToArray());
+                    var type = doc2.DocumentNode.SelectNodes("//div[@class=\"step_nav\"]//a");
+                    var image = html.Where(m => m.GetAttributeValue("property", "") == "og:image").First();
+                    Random rdm = new Random();
+                    product.Id = int.Parse(productId); // Id
+                    product.Name = title.GetAttributeValue("content", ""); // Name
+                    product.Detail = description.GetAttributeValue("content", ""); // Detail
+                    product.Price = decimal.Parse(price); // Price
+                    product.Type = type[2].InnerText; // Type
+                    product.Image = image.GetAttributeValue("content", ""); // Image
+                    product.Amount = rdm.Next(0, 100); //Amount
+                    context.P_Product.Add(product);
+                    count++;
+                }
+                codepage += 100;
+            }
+            Console.WriteLine(count);
+            int result = context.SaveChanges();
+            MessageBox.Show(result+"record");
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //P_Product product = new P_Product();
+            //product.Id = int.Parse(textBox1.Text); // Id
+            //product.Name = textBox2.Text; // Name
+            //product.Detail = textBox3.Text; // Detail
+            //product.Price = decimal.Parse(textBox4.Text); // Price
+            //product.Type = textBox7.Text; // Type
+            //product.Image = "https://www.jib.co.th/img_master/product/original/2022091014370655161_1.jpg"; // Image
+            //Random rdm = new Random();
+            //product.Amount = rdm.Next(0, 100); //Amount
+            //context.P_Product.Add(product);
+            //context.SaveChanges();
         }
     }
 }

@@ -41,6 +41,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.Product_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Product_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label7 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -50,8 +52,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.Product_ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Product_Name = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button4 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -157,6 +158,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button4);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Controls.Add(this.label7);
             this.tabPage1.Controls.Add(this.textBox7);
@@ -200,6 +202,16 @@
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
             // 
+            // Product_ID
+            // 
+            this.Product_ID.Text = "รหัสสินค้า";
+            this.Product_ID.Width = 100;
+            // 
+            // Product_Name
+            // 
+            this.Product_Name.Text = "ชื่อสินค้า";
+            this.Product_Name.Width = 1000;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -235,6 +247,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "เพิ่มข้อมูลเข้าฐานข้อมูล";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox6
             // 
@@ -278,15 +291,15 @@
             this.tabPage2.Text = "Shopping Cart";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // Product_ID
+            // button4
             // 
-            this.Product_ID.Text = "รหัสสินค้า";
-            this.Product_ID.Width = 100;
-            // 
-            // Product_Name
-            // 
-            this.Product_Name.Text = "ชื่อสินค้า";
-            this.Product_Name.Width = 1000;
+            this.button4.Location = new System.Drawing.Point(753, 500);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 21;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Form1
             // 
@@ -330,6 +343,7 @@
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.ColumnHeader Product_ID;
         private System.Windows.Forms.ColumnHeader Product_Name;
+        private System.Windows.Forms.Button button4;
     }
 }
 
