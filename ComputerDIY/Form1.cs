@@ -120,6 +120,7 @@ namespace ComputerDIY
 
         private void listView1_MouseClick(object sender, MouseEventArgs e)
         {
+            //    https://www.jib.co.th/web/product/product_list/2/43
             //Console.WriteLine(listView1.SelectedItems[0].Text);
             textBox1.Text = listView1.SelectedItems[0].Text;
             // id
@@ -144,8 +145,8 @@ namespace ComputerDIY
                 First().InnerText;
             price = new string(price.Where(c => char.IsDigit(c)).ToArray());
             textBox4.Text = price;
-            //var type = doc.DocumentNode.SelectNodes("//div[@class=\"step_nav\"]//a");
-            //textBox8.Text = type[2].InnerText;
+            var type = doc.DocumentNode.SelectNodes("//div[@class=\"step_nav\"]//a");
+            textBox7.Text = type[2].InnerText;
 
         }
 
@@ -164,33 +165,49 @@ namespace ComputerDIY
                 {
                     break;
                 }
+                int i = 0;
                 foreach (HtmlNode node in titleNode)
                 {
                     P_Product product = new P_Product();
-                    string productId = node.Attributes["data-id"].Value;
-                    Console.WriteLine(productId);
-                    string url2 = "https://www.jib.co.th/web/product/readProduct/" + productId;
-                    HtmlWeb web2 = new HtmlWeb();
-                    HtmlAgilityPack.HtmlDocument doc2 = web2.Load(url2);
-                    var html = doc2.DocumentNode.Descendants("meta");
-                    var title = html.Where(m => m.GetAttributeValue("property", "") == "og:title").First();
-                    var description = html.Where(m => m.GetAttributeValue("property", "") == "og:description").First();
-                    var priceblock = doc2.DocumentNode.Descendants("div");
-                    var price = priceblock.Where(p => p.GetAttributeValue("class", "") == "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center price_block").
-                        First().InnerText;
-                    price = new string(price.Where(c => char.IsDigit(c)).ToArray());
-                    var type = doc2.DocumentNode.SelectNodes("//div[@class=\"step_nav\"]//a");
-                    var image = html.Where(m => m.GetAttributeValue("property", "") == "og:image").First();
-                    Random rdm = new Random();
-                    product.Id = int.Parse(productId); // Id
-                    product.Name = title.GetAttributeValue("content", ""); // Name
-                    product.Detail = description.GetAttributeValue("content", ""); // Detail
-                    product.Price = decimal.Parse(price); // Price
-                    product.Type = type[2].InnerText; // Type
-                    product.Image = image.GetAttributeValue("content", ""); // Image
-                    product.Amount = rdm.Next(0, 100); //Amount
-                    context.P_Product.Add(product);
-                    count++;
+                    //string productId = node.Attributes["data-id"].Value;
+                    int productId = int.Parse(node.Attributes["data-id"].Value);
+                    //int productId = int.Parse(listView1.Items[i].SubItems[0].Text);
+                    Console.WriteLine("Id : "+productId);
+                    try
+                    {
+                        var checkId = context.P_Product.Where(p => p.Id == productId).First();
+                        i++;
+                        continue;
+                    }
+                    catch (Exception)
+                    {
+                        string url2 = "https://www.jib.co.th/web/product/readProduct/" + productId;
+                        HtmlWeb web2 = new HtmlWeb();
+                        HtmlAgilityPack.HtmlDocument doc2 = web2.Load(url2);
+                        var html = doc2.DocumentNode.Descendants("meta");
+                        var title = html.Where(m => m.GetAttributeValue("property", "") == "og:title").First();
+                        var description = html.Where(m => m.GetAttributeValue("property", "") == "og:description").First();
+                        var priceblock = doc2.DocumentNode.Descendants("div");
+                        var price = priceblock.Where(p => p.GetAttributeValue("class", "") == "col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center price_block").
+                            First().InnerText;
+                        price = new string(price.Where(c => char.IsDigit(c)).ToArray());
+                        var type = doc2.DocumentNode.SelectNodes("//div[@class=\"step_nav\"]//a");
+                        var image = html.Where(m => m.GetAttributeValue("property", "") == "og:image").First();
+                        Random rdm = new Random();
+                        //product.Id = int.Parse(productId); // Id
+                        product.Id = productId; // Id
+                        product.Name = title.GetAttributeValue("content", ""); // Name
+                        product.Detail = description.GetAttributeValue("content", ""); // Detail
+                        product.Price = decimal.Parse(price); // Price
+                        product.Type = type[2].InnerText; // Type
+                        product.Image = image.GetAttributeValue("content", ""); // Image
+                        product.Amount = rdm.Next(0, 100); //Amount
+                        context.P_Product.Add(product);
+                        i++;
+                        count++;
+                        
+                    }
+                    
                 }
                 codepage += 100;
             }
