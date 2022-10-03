@@ -49,45 +49,50 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 176);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(27, 171);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.Size = new System.Drawing.Size(48, 20);
             this.label5.TabIndex = 22;
             this.label5.Text = "Email";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(23, 136);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(21, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(38, 13);
+            this.label4.Size = new System.Drawing.Size(55, 20);
             this.label4.TabIndex = 21;
             this.label4.Text = "Phone";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 101);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(8, 96);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.Size = new System.Drawing.Size(68, 20);
             this.label3.TabIndex = 20;
             this.label3.Text = "Address";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 65);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(25, 60);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(51, 20);
             this.label2.TabIndex = 19;
             this.label2.Text = "Name";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 32);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(52, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(16, 13);
+            this.label1.Size = new System.Drawing.Size(23, 20);
             this.label1.TabIndex = 18;
             this.label1.Text = "Id";
             // 
@@ -148,22 +153,26 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(215, 219);
+            this.btnCancel.BackColor = System.Drawing.Color.LightCoral;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(229, 206);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(112, 49);
             this.btnCancel.TabIndex = 25;
             this.btnCancel.Text = "ยกเลิก";
-            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(134, 219);
+            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(80, 206);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(112, 49);
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "บันทึก";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // openFileDialog1
@@ -174,6 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(472, 263);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);

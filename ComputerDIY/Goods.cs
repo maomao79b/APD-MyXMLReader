@@ -20,6 +20,8 @@ namespace ComputerDIY
     {
         Jack context = new Jack();
         Login login;
+        public string imgLink = "KO";
+
         public Goods(Login login)
         {
             this.login = login;
@@ -242,7 +244,53 @@ namespace ComputerDIY
 
         private void button4_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = context.P_Product.ToList();
+            pProductBindingSource.DataSource = context.P_Product.ToList();
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void pictureBox2_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            int id = int.Parse(textBox11.Text);
+            var f = context.P_Product.Where(p => p.Id == id).First();
+            pictureBox2.Image = LoadImage(f.Image);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddnewProduct_img newProductImg = new AddnewProduct_img(this);
+            newProductImg.ShowDialog();
+            try
+            {
+                pictureBox2.Image = LoadImage(this.imgLink);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("error link");
+            }
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -56,23 +56,51 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.btnEditProduct = new System.Windows.Forms.Button();
+            this.btnRemoveProduct = new System.Windows.Forms.Button();
+            this.btnAddProduct = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.pProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(597, 59);
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(266, 20);
             this.textBox1.TabIndex = 1;
             // 
@@ -99,6 +127,7 @@
             this.textBox2.Location = new System.Drawing.Point(597, 98);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(268, 66);
             this.textBox2.TabIndex = 4;
             // 
@@ -116,6 +145,7 @@
             this.textBox3.Location = new System.Drawing.Point(597, 183);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(268, 76);
             this.textBox3.TabIndex = 6;
             // 
@@ -142,6 +172,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(630, 502);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 9;
             // 
@@ -159,6 +190,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(1, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -221,6 +253,7 @@
             // 
             this.textBox8.Location = new System.Drawing.Point(304, 33);
             this.textBox8.Name = "textBox8";
+            this.textBox8.ReadOnly = true;
             this.textBox8.Size = new System.Drawing.Size(39, 20);
             this.textBox8.TabIndex = 21;
             // 
@@ -279,18 +312,21 @@
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(18, 467);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(565, 55);
             this.button1.TabIndex = 16;
             this.button1.Text = "เพิ่มข้อมูลเข้าฐานข้อมูล";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox6
             // 
             this.textBox6.Location = new System.Drawing.Point(114, 32);
             this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(39, 20);
             this.textBox6.TabIndex = 14;
             // 
@@ -322,6 +358,29 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage2.Controls.Add(this.comboBox1);
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.textBox15);
+            this.tabPage2.Controls.Add(this.button6);
+            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.btnEditProduct);
+            this.tabPage2.Controls.Add(this.btnRemoveProduct);
+            this.tabPage2.Controls.Add(this.btnAddProduct);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.textBox14);
+            this.tabPage2.Controls.Add(this.label15);
+            this.tabPage2.Controls.Add(this.textBox13);
+            this.tabPage2.Controls.Add(this.label16);
+            this.tabPage2.Controls.Add(this.label14);
+            this.tabPage2.Controls.Add(this.textBox9);
+            this.tabPage2.Controls.Add(this.textBox10);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.textBox11);
+            this.tabPage2.Controls.Add(this.pictureBox2);
+            this.tabPage2.Controls.Add(this.label11);
+            this.tabPage2.Controls.Add(this.label12);
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.textBox12);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.dataGridView1);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -331,13 +390,229 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "ManageGoods";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(472, 20);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(115, 21);
+            this.comboBox1.TabIndex = 32;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(372, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(94, 13);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "เลือกประเภทสินค้า";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(596, 20);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(166, 20);
+            this.textBox15.TabIndex = 30;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(773, 13);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(87, 31);
+            this.button6.TabIndex = 29;
+            this.button6.Text = "ค้นหา";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(687, 476);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 28;
+            this.button5.Text = "เปลี่ยนรูป";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // btnEditProduct
+            // 
+            this.btnEditProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnEditProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditProduct.Location = new System.Drawing.Point(111, 469);
+            this.btnEditProduct.Name = "btnEditProduct";
+            this.btnEditProduct.Size = new System.Drawing.Size(133, 47);
+            this.btnEditProduct.TabIndex = 27;
+            this.btnEditProduct.Text = "บันทึกการแก้ไข";
+            this.btnEditProduct.UseVisualStyleBackColor = false;
+            // 
+            // btnRemoveProduct
+            // 
+            this.btnRemoveProduct.BackColor = System.Drawing.Color.LightCoral;
+            this.btnRemoveProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveProduct.Location = new System.Drawing.Point(313, 469);
+            this.btnRemoveProduct.Name = "btnRemoveProduct";
+            this.btnRemoveProduct.Size = new System.Drawing.Size(98, 47);
+            this.btnRemoveProduct.TabIndex = 26;
+            this.btnRemoveProduct.Text = "ลบสินค้า";
+            this.btnRemoveProduct.UseVisualStyleBackColor = false;
+            // 
+            // btnAddProduct
+            // 
+            this.btnAddProduct.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnAddProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddProduct.Location = new System.Drawing.Point(7, 469);
+            this.btnAddProduct.Name = "btnAddProduct";
+            this.btnAddProduct.Size = new System.Drawing.Size(98, 47);
+            this.btnAddProduct.TabIndex = 25;
+            this.btnAddProduct.Text = "เพิ่มสินค้า";
+            this.btnAddProduct.UseVisualStyleBackColor = false;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(561, 488);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(22, 13);
+            this.label17.TabIndex = 24;
+            this.label17.Text = "ชิ้น";
+            // 
+            // textBox14
+            // 
+            this.textBox14.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Amount", true));
+            this.textBox14.Location = new System.Drawing.Point(472, 483);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(83, 20);
+            this.textBox14.TabIndex = 23;
+            // 
+            // pProductBindingSource
+            // 
+            this.pProductBindingSource.DataSource = typeof(ComputerDIY.P_Product);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(429, 487);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(37, 13);
+            this.label15.TabIndex = 22;
+            this.label15.Text = "คงคลัง";
+            // 
+            // textBox13
+            // 
+            this.textBox13.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Type", true));
+            this.textBox13.Location = new System.Drawing.Point(645, 509);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(220, 20);
+            this.textBox13.TabIndex = 21;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(595, 512);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(44, 13);
+            this.label16.TabIndex = 20;
+            this.label16.Text = "ประเภท";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(561, 453);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(26, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "บาท";
+            // 
+            // textBox9
+            // 
+            this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Name", true));
+            this.textBox9.Location = new System.Drawing.Point(596, 105);
+            this.textBox9.Multiline = true;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(268, 66);
+            this.textBox9.TabIndex = 13;
+            // 
+            // textBox10
+            // 
+            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Price", true));
+            this.textBox10.Location = new System.Drawing.Point(472, 450);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(83, 20);
+            this.textBox10.TabIndex = 18;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(436, 453);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "ราคา";
+            // 
+            // textBox11
+            // 
+            this.textBox11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Id", true));
+            this.textBox11.Location = new System.Drawing.Point(596, 66);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(266, 20);
+            this.textBox11.TabIndex = 10;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Location = new System.Drawing.Point(596, 273);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(266, 197);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 16;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseClick);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(593, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(52, 13);
+            this.label11.TabIndex = 11;
+            this.label11.Text = "รหัสสินค้า";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(593, 89);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "ชื่อสินค้า";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(593, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(87, 13);
+            this.label13.TabIndex = 14;
+            this.label13.Text = "รายละเอียดสินค้า";
+            // 
+            // textBox12
+            // 
+            this.textBox12.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Detail", true));
+            this.textBox12.Location = new System.Drawing.Point(596, 190);
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(268, 76);
+            this.textBox12.TabIndex = 15;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(7, 13);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 1;
-            this.button4.Text = "FillData";
+            this.button4.Text = "ดึงข้อมูล";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -355,8 +630,11 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(580, 472);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(580, 394);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -376,9 +654,27 @@
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             this.nameDataGridViewTextBoxColumn.Width = 60;
             // 
-            // pProductBindingSource
+            // tabPage3
             // 
-            this.pProductBindingSource.DataSource = typeof(ComputerDIY.P_Product);
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(871, 533);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "ออกจากระบบ";
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(325, 42);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(180, 63);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "ออกจากระบบ";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Goods
             // 
@@ -397,8 +693,11 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -436,6 +735,31 @@
         private System.Windows.Forms.BindingSource pProductBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btnEditProduct;
+        private System.Windows.Forms.Button btnRemoveProduct;
+        private System.Windows.Forms.Button btnAddProduct;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button button7;
     }
 }
 

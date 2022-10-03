@@ -131,6 +131,11 @@ namespace ComputerDIY
             pEmployeeBindingSource.DataSource = context.P_Employee.ToList();
         }
 
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         //private Image LoadImage(string url)
         //{
         //    try
