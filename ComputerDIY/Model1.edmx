@@ -5,6 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="APD65_63011212014Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="P_Account">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="P_Customer">
           <Key>
             <PropertyRef Name="Id" />
@@ -22,8 +30,8 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Address" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
-          <Property Name="Image" Type="image" Nullable="false" />
-          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Image" Type="image" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="P_Order">
           <Key>
@@ -110,6 +118,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="APD65_63011212014ModelStoreContainer">
+          <EntitySet Name="P_Account" EntityType="Self.P_Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Customer" EntityType="Self.P_Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Employee" EntityType="Self.P_Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="P_Order" EntityType="Self.P_Order" Schema="dbo" store:Type="Tables" />
@@ -142,17 +151,6 @@
           <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="P_Order" Relationship="Self.FK_P_Order_P_Customer" FromRole="P_Customer" ToRole="P_Order" />
-        </EntityType>
-        <EntityType Name="P_Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="P_Order">
           <Key>
@@ -245,7 +243,6 @@
         </Association>
         <EntityContainer Name="Jack" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="P_Customer" EntityType="Self.P_Customer" />
-          <EntitySet Name="P_Employee" EntityType="Self.P_Employee" />
           <EntitySet Name="P_Order" EntityType="Self.P_Order" />
           <EntitySet Name="P_OrderItem" EntityType="Self.P_OrderItem" />
           <EntitySet Name="P_Product" EntityType="Self.P_Product" />
@@ -262,7 +259,28 @@
             <End Role="P_Product" EntitySet="P_Product" />
             <End Role="P_OrderItem" EntitySet="P_OrderItem" />
           </AssociationSet>
+          <EntitySet Name="P_Account" EntityType="APD65_63011212014Model.P_Account" />
+          <EntitySet Name="P_Employee" EntityType="APD65_63011212014Model.P_Employee" />
         </EntityContainer>
+        <EntityType Name="P_Account">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="P_Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -276,18 +294,6 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="P_Employee">
-            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Employee">
-              <MappingFragment StoreEntitySet="P_Employee">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -334,6 +340,27 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Product_1" ColumnName="Product_1" />
                 <ScalarProperty Name="Product_2" ColumnName="Product_2" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Account">
+            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Account">
+              <MappingFragment StoreEntitySet="P_Account">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Employee">
+            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Employee">
+              <MappingFragment StoreEntitySet="P_Employee">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -16,11 +16,13 @@ using Image = System.Drawing.Image;
 
 namespace ComputerDIY
 {
-    public partial class Form1 : Form
+    public partial class Goods : Form
     {
         Jack context = new Jack();
-        public Form1()
+        Login login;
+        public Goods(Login login)
         {
+            this.login = login;
             InitializeComponent();
         }
 
@@ -30,13 +32,21 @@ namespace ComputerDIY
         }
         private Image LoadImage(string url)
         {
-            HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url);
-            myHttpWebRequest.UserAgent = "Chrome/105.0.0.0";
-            HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
-            Stream streamResponse = myHttpWebResponse.GetResponseStream();
-            Bitmap bmp = new Bitmap(streamResponse);
-            streamResponse.Dispose();
-            return bmp;
+            try
+            {
+                HttpWebRequest myHttpWebRequest = (HttpWebRequest)WebRequest.Create(url);
+                myHttpWebRequest.UserAgent = "Chrome/105.0.0.0";
+                HttpWebResponse myHttpWebResponse = (HttpWebResponse)myHttpWebRequest.GetResponse();
+                Stream streamResponse = myHttpWebResponse.GetResponseStream();
+                Bitmap bmp = new Bitmap(streamResponse);
+                streamResponse.Dispose();
+                return bmp;
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         //private void button1_Click(object sender, EventArgs e)
@@ -63,12 +73,14 @@ namespace ComputerDIY
         private void button2_Click(object sender, EventArgs e)
         {
             //string url = "https://www.jib.co.th/web/product/readProduct/" + textBox1.Text;
+            listView1.Items.Clear();
             string url = textBox5.Text;
             HtmlWeb web = new HtmlWeb();
             HtmlAgilityPack.HtmlDocument doc = web.Load(url);
 
             var numberOfPage = doc.DocumentNode.SelectNodes("//div[@class=\"col-md-6 col-sm-6 pad-0\"]//span");
             textBox6.Text = numberOfPage[1].InnerText;
+            textBox8.Text = numberOfPage[0].InnerText;
             // type
             var typeOfProduct = doc.DocumentNode.SelectNodes("//span[@class=\"en\"]");
             textBox7.Text = typeOfProduct[1].InnerText;
@@ -165,7 +177,7 @@ namespace ComputerDIY
                 {
                     break;
                 }
-                int i = 0;
+                //int i = 0;
                 foreach (HtmlNode node in titleNode)
                 {
                     P_Product product = new P_Product();
@@ -176,7 +188,7 @@ namespace ComputerDIY
                     try
                     {
                         var checkId = context.P_Product.Where(p => p.Id == productId).First();
-                        i++;
+                        //i++;
                         continue;
                     }
                     catch (Exception)
@@ -203,7 +215,8 @@ namespace ComputerDIY
                         product.Image = image.GetAttributeValue("content", ""); // Image
                         product.Amount = rdm.Next(0, 100); //Amount
                         context.P_Product.Add(product);
-                        i++;
+                        context.SaveChanges();
+                        //i++;
                         count++;
                         
                     }
@@ -211,24 +224,25 @@ namespace ComputerDIY
                 }
                 codepage += 100;
             }
-            Console.WriteLine(count);
-            int result = context.SaveChanges();
-            MessageBox.Show(result+"record");
+            //Console.WriteLine(count);
+            //int result = context.SaveChanges();
+            //MessageBox.Show(result+" record");
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //this.login.Visible = true;
+            //this.Close();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.login.Visible = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //P_Product product = new P_Product();
-            //product.Id = int.Parse(textBox1.Text); // Id
-            //product.Name = textBox2.Text; // Name
-            //product.Detail = textBox3.Text; // Detail
-            //product.Price = decimal.Parse(textBox4.Text); // Price
-            //product.Type = textBox7.Text; // Type
-            //product.Image = "https://www.jib.co.th/img_master/product/original/2022091014370655161_1.jpg"; // Image
-            //Random rdm = new Random();
-            //product.Amount = rdm.Next(0, 100); //Amount
-            //context.P_Product.Add(product);
-            //context.SaveChanges();
+            dataGridView1.DataSource = context.P_Product.ToList();
         }
     }
 }
