@@ -13,6 +13,7 @@ namespace ComputerDIY
     public partial class Shop : Form
     {
         Login login;
+        Jack context = new Jack();
         public Shop(Login login)
         {
             this.login = login;
@@ -27,6 +28,21 @@ namespace ComputerDIY
         private void Shop_FormClosing(object sender, FormClosingEventArgs e)
         {
             this.login.Visible = true;
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            pProductBindingSource.DataSource = context.P_Product.ToList();
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
