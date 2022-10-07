@@ -68,16 +68,16 @@
             this.button9 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.pEmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addressDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addressDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -349,6 +349,7 @@
             this.button5.TabIndex = 32;
             this.button5.Text = "เพิ่ม";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button7
             // 
@@ -360,6 +361,7 @@
             this.button7.TabIndex = 31;
             this.button7.Text = "ลบ";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -371,6 +373,7 @@
             this.button8.TabIndex = 30;
             this.button8.Text = "บันทึกการเปลี่ยนแปลง";
             this.button8.UseVisualStyleBackColor = false;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label7
             // 
@@ -410,7 +413,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEmployeeBindingSource, "Phone", true));
+            this.textBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pCustomerBindingSource, "Phone", true));
             this.textBox8.Location = new System.Drawing.Point(522, 270);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(186, 20);
@@ -418,7 +421,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEmployeeBindingSource, "Address", true));
+            this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pCustomerBindingSource, "Address", true));
             this.textBox9.Location = new System.Drawing.Point(522, 235);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(186, 20);
@@ -426,7 +429,7 @@
             // 
             // textBox10
             // 
-            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEmployeeBindingSource, "Name", true));
+            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pCustomerBindingSource, "Name", true));
             this.textBox10.Location = new System.Drawing.Point(522, 199);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(186, 20);
@@ -468,6 +471,7 @@
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(409, 432);
             this.dataGridView2.TabIndex = 1;
+            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // tabPage3
             // 
@@ -498,42 +502,6 @@
             // pEmployeeBindingSource
             // 
             this.pEmployeeBindingSource.DataSource = typeof(ComputerDIY.P_Employee);
-            // 
-            // idDataGridViewTextBoxColumn1
-            // 
-            this.idDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
-            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // addressDataGridViewTextBoxColumn1
-            // 
-            this.addressDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addressDataGridViewTextBoxColumn1.DataPropertyName = "Address";
-            this.addressDataGridViewTextBoxColumn1.HeaderText = "Address";
-            this.addressDataGridViewTextBoxColumn1.Name = "addressDataGridViewTextBoxColumn1";
-            this.addressDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // phoneDataGridViewTextBoxColumn1
-            // 
-            this.phoneDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
-            this.phoneDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // pCustomerBindingSource
-            // 
-            this.pCustomerBindingSource.DataSource = typeof(ComputerDIY.P_Customer);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -575,6 +543,42 @@
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // pCustomerBindingSource
+            // 
+            this.pCustomerBindingSource.DataSource = typeof(ComputerDIY.P_Customer);
+            // 
+            // idDataGridViewTextBoxColumn1
+            // 
+            this.idDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
+            this.idDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // addressDataGridViewTextBoxColumn1
+            // 
+            this.addressDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addressDataGridViewTextBoxColumn1.DataPropertyName = "Address";
+            this.addressDataGridViewTextBoxColumn1.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn1.Name = "addressDataGridViewTextBoxColumn1";
+            this.addressDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn1
+            // 
+            this.phoneDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
+            this.phoneDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // Admin
             // 

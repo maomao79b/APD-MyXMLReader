@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddnewCm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddnewCm.Designer.cs">
+      <DependentUpon>AddnewCm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddnewEm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
     <Compile Include="Shop.Designer.cs">
       <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddnewCm.resx">
+      <DependentUpon>AddnewCm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddnewEm.resx">
       <DependentUpon>AddnewEm.cs</DependentUpon>
     </EmbeddedResource>

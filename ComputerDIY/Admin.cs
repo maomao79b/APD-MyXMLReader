@@ -46,11 +46,6 @@ namespace ComputerDIY
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             textBox1.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            //textBox2.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            //textBox3.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            //textBox4.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            //textBox5.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            //pictureBox1.Load(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -71,7 +66,7 @@ namespace ComputerDIY
 
         private void button3_Click(object sender, EventArgs e)
         {
-            int change = context.SaveChanges();
+            context.SaveChanges();
             MessageBox.Show("Save Success");
         }
 
@@ -97,12 +92,9 @@ namespace ComputerDIY
 
         private void btnAddEm_Click(object sender, EventArgs e)
         {
-            AddnewEm addnew = new AddnewEm(this);
-            addnew.ShowDialog();
-            //if(addnew.ShowDialog() != DialogResult.OK)
-            //{
-            //    pEmployeeBindingSource.DataSource = context.P_Employee.ToList();
-            //}
+            AddnewEm addnewem = new AddnewEm(this);
+            addnewem.ShowDialog();
+            pEmployeeBindingSource.DataSource = context.P_Employee.ToList();
         }
 
         public static byte[] ConvertImageToByteArray(string imagePath)
@@ -134,6 +126,36 @@ namespace ComputerDIY
         private void button9_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            AddnewCm addnewcm = new AddnewCm(this);
+            addnewcm.ShowDialog();
+            pCustomerBindingSource.DataSource = context.P_Customer.ToList();
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            textBox11.Text = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            int cm_id = int.Parse(textBox11.Text);
+            var result = from em in context.P_Customer
+                         where em.Id == cm_id
+                         select em;
+            context.P_Customer.Remove(result.First());
+            context.SaveChanges();
+            MessageBox.Show("Remove Success");
+            pCustomerBindingSource.DataSource = context.P_Customer.ToList();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Save Success");
         }
 
         //private Image LoadImage(string url)
