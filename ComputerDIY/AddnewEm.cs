@@ -24,7 +24,7 @@ namespace ComputerDIY
 
         private void AddnewEm_Load(object sender, EventArgs e)
         {
-
+            //kkk
         }
 
         private void btnChangeImg_Click(object sender, EventArgs e)
