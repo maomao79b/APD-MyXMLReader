@@ -95,6 +95,13 @@
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Logout = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.text_ID_pay = new System.Windows.Forms.TextBox();
+            this.text_Name_pay = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.text_Phone_pay = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.shopping.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -104,6 +111,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.Logout.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -121,13 +129,13 @@
             // shopping
             // 
             this.shopping.BackColor = System.Drawing.Color.SkyBlue;
+            this.shopping.Controls.Add(this.groupBox2);
             this.shopping.Controls.Add(this.label13);
             this.shopping.Controls.Add(this.textBox11);
             this.shopping.Controls.Add(this.button9);
             this.shopping.Controls.Add(this.button7);
             this.shopping.Controls.Add(this.listView1);
             this.shopping.Controls.Add(this.button5);
-            this.shopping.Controls.Add(this.button4);
             this.shopping.Controls.Add(this.button3);
             this.shopping.Controls.Add(this.label11);
             this.shopping.Controls.Add(this.label8);
@@ -251,9 +259,9 @@
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(731, 443);
+            this.button4.Location = new System.Drawing.Point(84, 142);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(113, 62);
+            this.button4.Size = new System.Drawing.Size(180, 46);
             this.button4.TabIndex = 22;
             this.button4.Text = "ยืนยันการชำระเงิน";
             this.button4.UseVisualStyleBackColor = false;
@@ -791,6 +799,71 @@
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label19);
+            this.groupBox2.Controls.Add(this.text_Phone_pay);
+            this.groupBox2.Controls.Add(this.label18);
+            this.groupBox2.Controls.Add(this.text_Name_pay);
+            this.groupBox2.Controls.Add(this.text_ID_pay);
+            this.groupBox2.Controls.Add(this.button4);
+            this.groupBox2.Location = new System.Drawing.Point(563, 432);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(335, 205);
+            this.groupBox2.TabIndex = 30;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "ชำระเงิน";
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // text_ID_pay
+            // 
+            this.text_ID_pay.Location = new System.Drawing.Point(84, 31);
+            this.text_ID_pay.Name = "text_ID_pay";
+            this.text_ID_pay.Size = new System.Drawing.Size(180, 20);
+            this.text_ID_pay.TabIndex = 31;
+            // 
+            // text_Name_pay
+            // 
+            this.text_Name_pay.Location = new System.Drawing.Point(84, 69);
+            this.text_Name_pay.Name = "text_Name_pay";
+            this.text_Name_pay.Size = new System.Drawing.Size(180, 20);
+            this.text_Name_pay.TabIndex = 32;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(22, 34);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(50, 13);
+            this.label18.TabIndex = 31;
+            this.label18.Text = "ID ลูกค้า*";
+            // 
+            // text_Phone_pay
+            // 
+            this.text_Phone_pay.Location = new System.Drawing.Point(84, 105);
+            this.text_Phone_pay.Name = "text_Phone_pay";
+            this.text_Phone_pay.Size = new System.Drawing.Size(180, 20);
+            this.text_Phone_pay.TabIndex = 33;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(22, 72);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(45, 13);
+            this.label19.TabIndex = 34;
+            this.label19.Text = "ชื่อลูกค้า";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(22, 108);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(49, 13);
+            this.label20.TabIndex = 35;
+            this.label20.Text = "เบอร์โทร\r\n";
+            // 
             // Shop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -812,6 +885,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.Logout.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -884,5 +959,12 @@
         private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.ColumnHeader Id;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox text_Name_pay;
+        private System.Windows.Forms.TextBox text_ID_pay;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox text_Phone_pay;
+        private System.Windows.Forms.Label label18;
     }
 }

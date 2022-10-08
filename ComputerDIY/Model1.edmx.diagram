@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="827e2a28e9a7461ba6f861c75e251e8f" Name="Diagram1">
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_Customer" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_Order" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_OrderItem" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_Product" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_Promotion" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="APD65_63011212014Model.FK_P_Order_P_Customer" ManuallyRouted="false" />
-        <AssociationConnector Association="APD65_63011212014Model.FK_P_OrderItem_P_Order" ManuallyRouted="false" />
-        <AssociationConnector Association="APD65_63011212014Model.FK_P_OrderItem_P_Product" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_Account" Width="1.5" PointX="5.375" PointY="7.75" />
-        <EntityTypeShape EntityType="APD65_63011212014Model.P_Employee" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_Promotion" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_Account" Width="1.5" PointX="4.375" PointY="5.25" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_Employee" Width="1.5" PointX="2.625" PointY="5.25" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_Customer" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_Order" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_OrderItem" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="APD65_63011212014Model.P_Product" Width="1.5" PointX="3" PointY="9" />
+        <AssociationConnector Association="APD65_63011212014Model.FK_P_Order_P_Customer" />
+        <AssociationConnector Association="APD65_63011212014Model.FK_P_OrderItem_P_Order" />
+        <AssociationConnector Association="APD65_63011212014Model.FK_P_OrderItem_P_Product" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

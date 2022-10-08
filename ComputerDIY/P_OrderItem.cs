@@ -17,10 +17,10 @@ namespace ComputerDIY
         public int Id { get; set; }
         public int OrderId { get; set; }
         public int ProductId { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public int Amount { get; set; }
         public string Type { get; set; }
-        public string Image { get; set; }
+        public decimal TotalPrice { get; set; }
     
         public virtual P_Order P_Order { get; set; }
         public virtual P_Product P_Product { get; set; }

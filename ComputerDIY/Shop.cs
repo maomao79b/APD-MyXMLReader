@@ -250,7 +250,38 @@ namespace ComputerDIY
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            //string nameProduct = textBox3.Text;
+            //var result2 = context.AmazonProducts.Where(p => p.ProductName == nameProduct).First();
+            P_Order order = new P_Order();
+            order.Cid = int.Parse(text_ID_pay.Text);
+            order.Cname = text_Name_pay.Text;
+            order.Phone = text_Phone_pay.Text;
+            order.OrderDate = DateTime.Now;
+            order.TotalPrice = decimal.Parse(label11.Text);
+            context.P_Order.Add(order);
+            Console.WriteLine(order.Id.ToString());
+            foreach (ListViewItem item in listView1.Items)
+            {
+                P_OrderItem orderItem = new P_OrderItem();
+                int productId = int.Parse(item.SubItems[0].Text);
+                orderItem.OrderId = order.Id;
+                orderItem.ProductId = productId;
+                Console.WriteLine(item.SubItems[3].Text);
+                orderItem.Price = decimal.Parse(item.SubItems[3].Text);
+                orderItem.Amount = int.Parse(item.SubItems[4].Text);
+                orderItem.Type = item.SubItems[2].Text;
+                orderItem.TotalPrice = decimal.Parse(item.SubItems[5].Text);
+                context.P_OrderItem.Add(orderItem);
+                var result = context.P_Product.Where(p => p.Id == productId).First();
+                result.Amount = result.Amount - 1;
+                context.SaveChanges();
+            } 
+            listView1.Items.Clear();
+            label11.Text = "0";
+            text_ID_pay.Text = "";
+            text_Name_pay.Text = "";
+            text_Phone_pay.Text = "";
+            MessageBox.Show("Success");
         }
 
         private void button6_Click_1(object sender, EventArgs e)
@@ -276,6 +307,11 @@ namespace ComputerDIY
             {
 
             }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

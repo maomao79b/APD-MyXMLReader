@@ -22,8 +22,9 @@ namespace ComputerDIY
     
         public int Id { get; set; }
         public int Cid { get; set; }
+        public string Cname { get; set; }
+        public string Phone { get; set; }
         public System.DateTime OrderDate { get; set; }
-        public decimal TotalAmount { get; set; }
         public decimal TotalPrice { get; set; }
     
         public virtual P_Customer P_Customer { get; set; }
