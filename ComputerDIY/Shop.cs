@@ -9,7 +9,9 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using ListView = System.Windows.Forms.ListView;
 
 namespace ComputerDIY
 {
@@ -17,6 +19,7 @@ namespace ComputerDIY
     {
         Login login;
         Jack context = new Jack();
+        public string readQRCode;
         public Shop(Login login)
         {
             this.login = login;
@@ -144,7 +147,135 @@ namespace ComputerDIY
 
         private void button5_Click(object sender, EventArgs e)
         {
+            ReadQRCode qrcode = new ReadQRCode(this);
+            qrcode.ShowDialog();
+            Console.WriteLine(this.readQRCode);
+        }
 
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listView1.SelectedItems[0].Remove();
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                listView1.SelectedItems[0].SubItems[4].Text = textBox11.Text;
+                decimal total = decimal.Parse(textBox11.Text) * decimal.Parse(listView1.SelectedItems[0].SubItems[3].Text);
+                listView1.SelectedItems[0].SubItems[5].Text = total.ToString();
+                label11.Text = calculateTotal(listView1.Items).ToString();
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                textBox11.Text = listView1.SelectedItems[0].SubItems[4].Text;
+                int id = int.Parse(listView1.SelectedItems[0].SubItems[0].Text);
+                var f = context.P_Product.Where(p => p.Id == id).First();
+                textBox8.Text = f.Detail;
+                pictureBox1.Image = LoadImage(f.Image);
+            }
+            catch (Exception)
+            {
+
+            }
+            
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            
+        }
+        
+        public double calculateTotal(ListView.ListViewItemCollection items)
+        {
+            double total = 0;
+            foreach(ListViewItem item in items)
+                total += double.Parse(item.SubItems[5].Text);
+            return total;
+        }
+
+        private void btnAddId_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(textBox_addIdProduct.Text);
+                var f = context.P_Product.Where(p => p.Id == id).First();
+                string[] items = new string[]
+                {
+                    textBox_addIdProduct.Text,
+                    f.Name,
+                    f.Type,
+                    f.Price.ToString(),
+                    "1",
+                    f.Price.ToString()
+                };
+                listView1.Items.Add(new ListViewItem(items));
+                label11.Text = calculateTotal(listView1.Items).ToString();
+            }
+            catch (Exception)
+            {
+                
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int id = int.Parse(textBox3.Text);
+                var f = context.P_Product.Where(p => p.Id == id).First();
+                string[] items = new string[]
+                {
+                    textBox3.Text,
+                    f.Name,
+                    f.Type,
+                    f.Price.ToString(),
+                    "1",
+                    f.Price.ToString()
+                };
+                listView1.Items.Add(new ListViewItem(items));
+                label11.Text = calculateTotal(listView1.Items).ToString();
+                MessageBox.Show("เพิ่มสำเร็จ");
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

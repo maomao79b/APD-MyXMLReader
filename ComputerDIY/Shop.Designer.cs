@@ -31,10 +31,17 @@
             this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.shopping = new System.Windows.Forms.TabPage();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Names = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Type = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Price = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Amount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.TotalPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -47,6 +54,7 @@
             this.textBox_addIdProduct = new System.Windows.Forms.TextBox();
             this.btnAddId = new System.Windows.Forms.Button();
             this.Product = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -112,9 +120,10 @@
             // 
             // shopping
             // 
-            this.shopping.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.shopping.BackColor = System.Drawing.Color.SkyBlue;
+            this.shopping.Controls.Add(this.label13);
+            this.shopping.Controls.Add(this.textBox11);
             this.shopping.Controls.Add(this.button9);
-            this.shopping.Controls.Add(this.button8);
             this.shopping.Controls.Add(this.button7);
             this.shopping.Controls.Add(this.listView1);
             this.shopping.Controls.Add(this.button5);
@@ -133,27 +142,34 @@
             this.shopping.TabIndex = 0;
             this.shopping.Text = "ขายสินค้า";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(157, 414);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(40, 13);
+            this.label13.TabIndex = 29;
+            this.label13.Text = "จำนวน";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(203, 411);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(121, 20);
+            this.textBox11.TabIndex = 3;
+            // 
             // button9
             // 
             this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(159, 404);
+            this.button9.Location = new System.Drawing.Point(330, 404);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(121, 62);
             this.button9.TabIndex = 28;
             this.button9.Text = "แก้ไขจำนวนสั่งซื้อ";
             this.button9.UseVisualStyleBackColor = false;
-            // 
-            // button8
-            // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(995, 112);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(178, 60);
-            this.button8.TabIndex = 27;
-            this.button8.Text = "BarCode";
-            this.button8.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button7
             // 
@@ -165,26 +181,69 @@
             this.button7.TabIndex = 26;
             this.button7.Text = "ลบรายการทั้งหมด";
             this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // listView1
             // 
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Id,
+            this.Names,
+            this.Type,
+            this.Price,
+            this.Amount,
+            this.TotalPrice});
+            this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(24, 46);
+            this.listView1.Location = new System.Drawing.Point(8, 6);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(663, 352);
+            this.listView1.Size = new System.Drawing.Size(902, 392);
             this.listView1.TabIndex = 24;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.listView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseClick);
+            // 
+            // Id
+            // 
+            this.Id.Text = "ID";
+            // 
+            // Names
+            // 
+            this.Names.Text = "ชื่อ";
+            this.Names.Width = 437;
+            // 
+            // Type
+            // 
+            this.Type.Text = "ประเภท";
+            this.Type.Width = 180;
+            // 
+            // Price
+            // 
+            this.Price.Text = "ราคา";
+            this.Price.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Price.Width = 80;
+            // 
+            // Amount
+            // 
+            this.Amount.Text = "จำนวน";
+            this.Amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.Text = "รวม";
+            this.TotalPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TotalPrice.Width = 80;
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(995, 46);
+            this.button5.Location = new System.Drawing.Point(963, 6);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(178, 60);
             this.button5.TabIndex = 23;
-            this.button5.Text = "QRCode";
+            this.button5.Text = "Scan";
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -192,12 +251,13 @@
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(574, 457);
+            this.button4.Location = new System.Drawing.Point(731, 443);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(113, 62);
             this.button4.TabIndex = 22;
             this.button4.Text = "ยืนยันการชำระเงิน";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -209,6 +269,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "ลบรายการ";
             this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label11
             // 
@@ -216,18 +277,19 @@
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(597, 404);
+            this.label11.Location = new System.Drawing.Point(820, 404);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(24, 25);
             this.label11.TabIndex = 21;
             this.label11.Text = "0";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(507, 404);
+            this.label8.Location = new System.Drawing.Point(730, 404);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 25);
             this.label8.TabIndex = 19;
@@ -236,7 +298,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(710, 206);
+            this.pictureBox1.Location = new System.Drawing.Point(920, 260);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(268, 230);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -246,7 +308,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(707, 107);
+            this.label7.Location = new System.Drawing.Point(917, 151);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 13);
             this.label7.TabIndex = 14;
@@ -254,7 +316,7 @@
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(710, 123);
+            this.textBox8.Location = new System.Drawing.Point(920, 175);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.ReadOnly = true;
@@ -265,7 +327,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBox_addIdProduct);
             this.groupBox1.Controls.Add(this.btnAddId);
-            this.groupBox1.Location = new System.Drawing.Point(706, 46);
+            this.groupBox1.Location = new System.Drawing.Point(916, 85);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(272, 57);
             this.groupBox1.TabIndex = 3;
@@ -287,10 +349,12 @@
             this.btnAddId.TabIndex = 1;
             this.btnAddId.Text = "เพิ่ม";
             this.btnAddId.UseVisualStyleBackColor = true;
+            this.btnAddId.Click += new System.EventHandler(this.btnAddId_Click);
             // 
             // Product
             // 
-            this.Product.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Product.BackColor = System.Drawing.Color.SkyBlue;
+            this.Product.Controls.Add(this.button6);
             this.Product.Controls.Add(this.button1);
             this.Product.Controls.Add(this.textBox9);
             this.Product.Controls.Add(this.label12);
@@ -329,6 +393,18 @@
             this.Product.TabIndex = 1;
             this.Product.Text = "แสดงสินค้า";
             this.Product.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(861, 560);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(198, 79);
+            this.button6.TabIndex = 45;
+            this.button6.Text = "เพิ่มในรายการสั่งซื้อ";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click_1);
             // 
             // button1
             // 
@@ -695,7 +771,7 @@
             // 
             // Logout
             // 
-            this.Logout.BackColor = System.Drawing.Color.LightGray;
+            this.Logout.BackColor = System.Drawing.Color.SkyBlue;
             this.Logout.Controls.Add(this.button13);
             this.Logout.Location = new System.Drawing.Point(4, 22);
             this.Logout.Name = "Logout";
@@ -722,7 +798,6 @@
             this.ClientSize = new System.Drawing.Size(1204, 680);
             this.Controls.Add(this.tabControl1);
             this.Name = "Shop";
-            this.Text = "Shop";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Shop_FormClosing);
             this.Load += new System.EventHandler(this.Shop_Load);
             this.tabControl1.ResumeLayout(false);
@@ -771,14 +846,13 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label11;
+        public System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ListView listView1;
+        public System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Label label5;
@@ -801,5 +875,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage Logout;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.ColumnHeader Names;
+        private System.Windows.Forms.ColumnHeader Type;
+        private System.Windows.Forms.ColumnHeader Price;
+        private System.Windows.Forms.ColumnHeader Amount;
+        private System.Windows.Forms.ColumnHeader TotalPrice;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.ColumnHeader Id;
+        private System.Windows.Forms.Button button6;
     }
 }

@@ -52,7 +52,7 @@
           <Property Name="ProductId" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
-          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Image" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="P_Product">
@@ -173,7 +173,7 @@
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
-          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="P_Order" Relationship="Self.FK_P_OrderItem_P_Order" FromRole="P_OrderItem" ToRole="P_Order" />
           <NavigationProperty Name="P_Product" Relationship="Self.FK_P_OrderItem_P_Product" FromRole="P_OrderItem" ToRole="P_Product" />
