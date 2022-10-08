@@ -158,6 +158,19 @@ namespace ComputerDIY
             MessageBox.Show("Save Success");
         }
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            string tx7 = textBox7.Text;
+
+            var result = from cm in context.P_Customer
+                         where cm.Id.ToString().Contains(tx7) ||
+                         cm.Name.Contains(tx7) ||
+                         cm.Address.Contains(tx7) ||
+                         cm.Phone.Contains(tx7) 
+                         select cm;
+            pCustomerBindingSource.DataSource = result.ToList();
+        }
+
         //private Image LoadImage(string url)
         //{
         //    try
