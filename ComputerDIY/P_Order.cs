@@ -26,6 +26,7 @@ namespace ComputerDIY
         public string Phone { get; set; }
         public System.DateTime OrderDate { get; set; }
         public decimal TotalPrice { get; set; }
+        public string Discount { get; set; }
     
         public virtual P_Customer P_Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

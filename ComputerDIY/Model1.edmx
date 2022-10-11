@@ -43,6 +43,7 @@
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="TotalPrice" Type="decimal" Precision="15" Scale="2" Nullable="false" />
+          <Property Name="Discount" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="P_OrderItem">
           <Key>
@@ -213,6 +214,7 @@
           <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <NavigationProperty Name="P_Customer" Relationship="APD65_63011212014Model.FK_P_Order_P_Customer" FromRole="P_Order" ToRole="P_Customer" />
           <NavigationProperty Name="P_OrderItem" Relationship="APD65_63011212014Model.FK_P_OrderItem_P_Order" FromRole="P_Order" ToRole="P_OrderItem" />
+          <Property Name="Discount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="P_OrderItem">
           <Key>
@@ -332,6 +334,7 @@
           <EntitySetMapping Name="P_Order">
             <EntityTypeMapping TypeName="APD65_63011212014Model.P_Order">
               <MappingFragment StoreEntitySet="P_Order">
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
                 <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
