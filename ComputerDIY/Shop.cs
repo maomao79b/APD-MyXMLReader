@@ -258,7 +258,7 @@ namespace ComputerDIY
             order.Phone = text_Phone_pay.Text;
             order.OrderDate = DateTime.Now;
             //order.TotalPrice = decimal.Parse(label11.Text);
-            context.P_Order.Add(order);
+            //context.P_Order.Add(order);
             //Console.WriteLine(order.Id.ToString());
             int countid1 = 0;
             int countid2 = 0;
@@ -271,13 +271,13 @@ namespace ComputerDIY
                 int productId = int.Parse(item.SubItems[0].Text);
                 orderItem.OrderId = order.Id;
                 orderItem.ProductId = productId;
-                Console.WriteLine(item.SubItems[3].Text);
+                //Console.WriteLine(item.SubItems[3].Text);
                 orderItem.Price = decimal.Parse(item.SubItems[3].Text);
                 orderItem.Amount = int.Parse(item.SubItems[4].Text);
                 orderItem.Type = item.SubItems[2].Text;
                 orderItem.TotalPrice = decimal.Parse(item.SubItems[5].Text);
-                //context.P_OrderItem.Add(orderItem);
-                Console.WriteLine(item.SubItems[0].Text);
+                context.P_OrderItem.Add(orderItem);
+                //Console.WriteLine(item.SubItems[0].Text);
                 try
                 {
                     if(promotion.Product_1 == item.SubItems[0].Text)

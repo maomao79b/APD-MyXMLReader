@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZXing;
 
 namespace ComputerDIY
 {
@@ -25,7 +26,12 @@ namespace ComputerDIY
 
         private void Admin_Load(object sender, EventArgs e)
         {
-            //this.login.Close();
+            var result = context.P_Product.ToList();
+            foreach (var item in result)
+            {
+                if (comboBox1.Items.IndexOf(item.Type) < 0)
+                    comboBox1.Items.Add(item.Type);
+            }
         }
 
         private void Admin_FormClosing(object sender, FormClosingEventArgs e)
@@ -169,6 +175,150 @@ namespace ComputerDIY
                          cm.Phone.Contains(tx7) 
                          select cm;
             pCustomerBindingSource.DataSource = result.ToList();
+        }
+
+        private void Product_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            var result = from pro in context.P_Product
+                         where pro.Type == comboBox1.Text
+                         select pro;
+            dataGridView3.DataSource = result.ToList();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            dataGridView3.DataSource = context.P_Product.ToList();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            var result = from order in context.P_Order
+                         where order.OrderDate.Year == dateTimePicker1.Value.Year &&
+                         order.OrderDate.Month == dateTimePicker1.Value.Month &&
+                         order.OrderDate.Day == dateTimePicker1.Value.Day
+                         select order;
+            dataGridView4.DataSource = result.ToList();
+            decimal total=0;
+            foreach(var item in result)
+            {
+                total += item.TotalPrice;
+            }
+            label12.Text = total.ToString();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            if(numericUpDown1.Value == (decimal)0)
+            {
+                var result = from order in context.P_Order
+                             where order.OrderDate.Year == DateTime.Now.Year &&
+                             order.OrderDate.Month == DateTime.Now.Month &&
+                             order.OrderDate.Day == DateTime.Now.Day
+                             select order;
+                dataGridView4.DataSource = result.ToList();
+                decimal total = 0;
+                foreach (var item in result)
+                {
+                    total += item.TotalPrice;
+                }
+                label12.Text = total.ToString();
+            }
+            else
+            {
+                var result = from order in context.P_Order
+                             where order.OrderDate.Year == DateTime.Now.Year &&
+                             order.OrderDate.Month == DateTime.Now.Month &&
+                             order.OrderDate.Day >= (DateTime.Now.Day - numericUpDown1.Value)
+                             select order;
+                dataGridView4.DataSource = result.ToList();
+                decimal total = 0;
+                foreach (var item in result)
+                {
+                    total += item.TotalPrice;
+                }
+                label12.Text = total.ToString();
+            }
+        }
+
+        private void CustomerBuyReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button14_Click_1(object sender, EventArgs e)
+        {
+            int cid = int.Parse(textBox12.Text);
+            var result = from order in context.P_Order
+                         where order.Cid == cid
+                         select order;
+            dataGridView5.DataSource = result.ToList();
+            decimal total = 0;
+            foreach (var item in result)
+            {
+                total += item.TotalPrice;
+            }
+            label21.Text = total.ToString();
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            
+            var result = from order in context.P_Order
+                         where order.P_Customer.Name == textBox13.Text
+                         select order;
+            dataGridView5.DataSource = result.ToList();
+            decimal total = 0;
+            foreach (var item in result)
+            {
+                total += item.TotalPrice;
+            }
+            label21.Text = total.ToString();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            var result = from order in context.P_Order
+                         where order.P_Customer.Phone == textBox14.Text
+                         select order;
+            dataGridView5.DataSource = result.ToList();
+            decimal total = 0;
+            foreach (var item in result)
+            {
+                total += item.TotalPrice;
+            }
+            label21.Text = total.ToString();
+        }
+
+        private void dataGridView5_MouseClick(object sender, MouseEventArgs e)
+        {
+            int oid = int.Parse(dataGridView5.SelectedRows[0].Cells[0].Value.ToString());
+            var result = from orderItems in context.P_OrderItem
+                         where orderItems.OrderId == oid
+                         select orderItems;
+            dataGridView6.DataSource = result.ToList();
+
+
+        }
+
+        private void dataGridView5_VisibleChanged(object sender, EventArgs e)
+        {
+
         }
 
         //private Image LoadImage(string url)
