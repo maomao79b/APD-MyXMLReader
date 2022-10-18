@@ -43,7 +43,7 @@
           <Property Name="Phone" Type="varchar" MaxLength="50" />
           <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="TotalPrice" Type="decimal" Precision="15" Scale="2" Nullable="false" />
-          <Property Name="Discount" Type="varchar" MaxLength="50" />
+          <Property Name="Discount" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="P_OrderItem">
           <Key>
@@ -73,7 +73,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Product_1" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Product_2" Type="varchar" MaxLength="150" Nullable="false" />
         </EntityType>
@@ -144,16 +144,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="APD65_63011212014Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="P_Promotion">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Product_1" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Product_2" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="Jack" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="P_Promotion" EntityType="Self.P_Promotion" />
           <EntitySet Name="P_Account" EntityType="APD65_63011212014Model.P_Account" />
           <EntitySet Name="P_Employee" EntityType="APD65_63011212014Model.P_Employee" />
           <EntitySet Name="P_Customer" EntityType="APD65_63011212014Model.P_Customer" />
@@ -172,6 +163,7 @@
             <End Role="P_Product" EntitySet="P_Product" />
             <End Role="P_OrderItem" EntitySet="P_OrderItem" />
           </AssociationSet>
+          <EntitySet Name="P_Promotion" EntityType="APD65_63011212014Model.P_Promotion" />
           </EntityContainer>
         <EntityType Name="P_Account">
           <Key>
@@ -214,7 +206,7 @@
           <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="15" Scale="2" />
           <NavigationProperty Name="P_Customer" Relationship="APD65_63011212014Model.FK_P_Order_P_Customer" FromRole="P_Order" ToRole="P_Customer" />
           <NavigationProperty Name="P_OrderItem" Relationship="APD65_63011212014Model.FK_P_OrderItem_P_Order" FromRole="P_Order" ToRole="P_OrderItem" />
-          <Property Name="Discount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Discount" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="P_OrderItem">
           <Key>
@@ -285,21 +277,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="P_Promotion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_1" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Product_2" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="APD65_63011212014ModelStoreContainer" CdmEntityContainer="Jack">
-          <EntitySetMapping Name="P_Promotion">
-            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Promotion">
-              <MappingFragment StoreEntitySet="P_Promotion">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Product_1" ColumnName="Product_1" />
-                <ScalarProperty Name="Product_2" ColumnName="Product_2" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="P_Account">
             <EntityTypeMapping TypeName="APD65_63011212014Model.P_Account">
               <MappingFragment StoreEntitySet="P_Account">
@@ -366,6 +357,15 @@
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Detail" ColumnName="Detail" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Promotion">
+            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Promotion">
+              <MappingFragment StoreEntitySet="P_Promotion">
+                <ScalarProperty Name="Product_2" ColumnName="Product_2" />
+                <ScalarProperty Name="Product_1" ColumnName="Product_1" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

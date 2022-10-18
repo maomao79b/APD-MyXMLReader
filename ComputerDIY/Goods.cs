@@ -30,7 +30,12 @@ namespace ComputerDIY
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+            var result = context.P_Product.ToList();
+            foreach (var item in result)
+            {
+                if (comboBox1.Items.IndexOf(item.Type) < 0)
+                    comboBox1.Items.Add(item.Type);
+            }
         }
         private Image LoadImage(string url)
         {
@@ -291,6 +296,125 @@ namespace ComputerDIY
         private void button7_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            string tx15 = textBox15.Text;
+
+            var result = from pro in context.P_Product
+                         where pro.Id.ToString().Contains(tx15) ||
+                         pro.Name.Contains(tx15) ||
+                         pro.Detail.Contains(tx15) ||
+                         pro.Type.Contains(tx15)
+                         select pro;
+            pProductBindingSource.DataSource = result.ToList();
+        }
+
+        private void btnRemoveProduct_Click(object sender, EventArgs e)
+        {
+            int pro_id = int.Parse(textBox11.Text);
+            string type = textBox13.Text;
+            var result = from pro in context.P_Product
+                         where pro.Id == pro_id
+                         select pro;
+            context.P_Product.Remove(result.First());
+            context.SaveChanges();
+            MessageBox.Show("Remove Success");
+            pProductBindingSource.DataSource = context.P_Product.Where(p => p.Type == type).ToList();
+        }
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Save success");
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
+        {
+            string type = comboBox1.SelectedItem.ToString();
+            pProductBindingSource.DataSource = context.P_Product.Where(p => p.Type == type).ToList();
+        }
+
+        private void dataGridView5_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int id1 = int.Parse(dataGridView5.SelectedRows[0].Cells[1].Value.ToString());
+                int id2 = int.Parse(dataGridView5.SelectedRows[0].Cells[2].Value.ToString());
+                var pro1 = context.P_Product.Where(p => p.Id == id1).First();
+                textBox17.Text = pro1.Id.ToString();
+                textBox16.Text = pro1.Name;
+                textBox18.Text = pro1.Detail;
+                textBox22.Text = pro1.Price.ToString();
+                pictureBox3.Image = LoadImage(pro1.Image);
+                var pro2 = context.P_Product.Where(p => p.Id == id2).First();
+                textBox20.Text = pro2.Id.ToString();
+                textBox19.Text = pro2.Name;
+                textBox21.Text = pro2.Detail;
+                textBox23.Text = pro2.Price.ToString();
+                pictureBox4.Image = LoadImage(pro2.Image);
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ไม่มีสินค้านี้");
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            pPromotionBindingSource.DataSource = context.P_Promotion.ToList();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string pro1 = textBox24.Text;
+                string pro2 = textBox25.Text;
+
+                P_Promotion promo = new P_Promotion();
+                promo.Product_1 = pro1;
+                promo.Product_2 = pro2;
+
+                context.P_Promotion.Add(promo);
+                context.SaveChanges();
+                pPromotionBindingSource.DataSource = context.P_Promotion.ToList();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please try again");
+            }
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            int promo_id = int.Parse(dataGridView5.SelectedRows[0].Cells[0].Value.ToString());
+            string type = textBox13.Text;
+            var result = from prom in context.P_Promotion
+                         where prom.Id == promo_id
+                         select prom;
+            context.P_Promotion.Remove(result.First());
+            context.SaveChanges();
+            MessageBox.Show("Remove Success");
+            pPromotionBindingSource.DataSource = context.P_Promotion.ToList();
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            AddIdproductFromWeb addnewIdProduct = new AddIdproductFromWeb(this);
+            addnewIdProduct.ShowDialog();
         }
     }
 }

@@ -72,8 +72,16 @@ namespace ComputerDIY
 
         private void button3_Click(object sender, EventArgs e)
         {
-            context.SaveChanges();
-            MessageBox.Show("Save Success");
+            try
+            {
+                context.SaveChanges();
+                MessageBox.Show("Save Success");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Save Failed");
+            }
         }
 
         private void refreshData()
@@ -317,6 +325,11 @@ namespace ComputerDIY
         }
 
         private void dataGridView5_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

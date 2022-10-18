@@ -250,95 +250,111 @@ namespace ComputerDIY
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //string nameProduct = textBox3.Text;
-            //var result2 = context.AmazonProducts.Where(p => p.ProductName == nameProduct).First();
-            P_Order order = new P_Order();
-            order.Cid = int.Parse(text_ID_pay.Text);
-            order.Cname = text_Name_pay.Text;
-            order.Phone = text_Phone_pay.Text;
-            order.OrderDate = DateTime.Now;
-            //order.TotalPrice = decimal.Parse(label11.Text);
-            //context.P_Order.Add(order);
-            //Console.WriteLine(order.Id.ToString());
-            int countid1 = 0;
-            int countid2 = 0;
-            decimal totalPrice1 = 0;
-            decimal totalPrice2 = 0;
-            var promotion = context.P_Promotion.First();
-            foreach (ListViewItem item in listView1.Items)
+            if(label11.Text == "0")
             {
-                P_OrderItem orderItem = new P_OrderItem();
-                int productId = int.Parse(item.SubItems[0].Text);
-                orderItem.OrderId = order.Id;
-                orderItem.ProductId = productId;
-                //Console.WriteLine(item.SubItems[3].Text);
-                orderItem.Price = decimal.Parse(item.SubItems[3].Text);
-                orderItem.Amount = int.Parse(item.SubItems[4].Text);
-                orderItem.Type = item.SubItems[2].Text;
-                orderItem.TotalPrice = decimal.Parse(item.SubItems[5].Text);
-                context.P_OrderItem.Add(orderItem);
-                //Console.WriteLine(item.SubItems[0].Text);
+                MessageBox.Show("กรุณาเพิ่มสินค้า");
+            }
+            else
+            {
                 try
                 {
-                    if(promotion.Product_1 == item.SubItems[0].Text)
+                    //string nameProduct = textBox3.Text;
+                    //var result2 = context.AmazonProducts.Where(p => p.ProductName == nameProduct).First();
+                    P_Order order = new P_Order();
+                    order.Cid = int.Parse(text_ID_pay.Text);
+                    order.Cname = text_Name_pay.Text;
+                    order.Phone = text_Phone_pay.Text;
+                    order.OrderDate = DateTime.Now;
+                    //order.TotalPrice = decimal.Parse(label11.Text);
+                    //context.P_Order.Add(order);
+                    //Console.WriteLine(order.Id.ToString());
+                    int countid1 = 0;
+                    int countid2 = 0;
+                    decimal totalPrice1 = 0;
+                    decimal totalPrice2 = 0;
+                    var promotion = context.P_Promotion.First();
+                    foreach (ListViewItem item in listView1.Items)
                     {
-                        countid1 += int.Parse(item.SubItems[4].Text);
-                        totalPrice1 += decimal.Parse(item.SubItems[5].Text);
+                        P_OrderItem orderItem = new P_OrderItem();
+                        int productId = int.Parse(item.SubItems[0].Text);
+                        orderItem.OrderId = order.Id;
+                        orderItem.ProductId = productId;
+                        //Console.WriteLine(item.SubItems[3].Text);
+                        orderItem.Price = decimal.Parse(item.SubItems[3].Text);
+                        orderItem.Amount = int.Parse(item.SubItems[4].Text);
+                        orderItem.Type = item.SubItems[2].Text;
+                        orderItem.TotalPrice = decimal.Parse(item.SubItems[5].Text);
+                        context.P_OrderItem.Add(orderItem);
+                        //Console.WriteLine(item.SubItems[0].Text);
+                        try
+                        {
+                            if (promotion.Product_1 == item.SubItems[0].Text)
+                            {
+                                countid1 += int.Parse(item.SubItems[4].Text);
+                                totalPrice1 += decimal.Parse(item.SubItems[5].Text);
+                            }
+                            else if (promotion.Product_2 == item.SubItems[0].Text)
+                            {
+                                countid2 += int.Parse(item.SubItems[4].Text);
+                                totalPrice2 += decimal.Parse(item.SubItems[5].Text);
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                        var result = context.P_Product.Where(p => p.Id == productId).First();
+                        result.Amount = result.Amount - 1;
                     }
-                    else if(promotion.Product_2 == item.SubItems[0].Text)
+                    string textDis = "";
+                    decimal discount = 0;
+                    if (countid1 >= 1 && countid2 >= 1)
                     {
-                        countid2 += int.Parse(item.SubItems[4].Text);
-                        totalPrice2 += decimal.Parse(item.SubItems[5].Text);
+                        int amountPack;
+                        decimal newtotal;
+                        if (countid1 == countid2)
+                        {
+                            amountPack = countid1;
+                            discount = (totalPrice1 + totalPrice2) * (decimal)0.1;
+                        }
+                        else
+                        {
+                            if (countid1 > countid2)
+                            {
+                                amountPack = countid2;
+                                newtotal = (totalPrice1 / countid1) * amountPack;
+                                discount = (newtotal + totalPrice2) * (decimal)0.1;
+                            }
+                            else
+                            {
+                                amountPack = countid1;
+                                newtotal = (totalPrice2 / countid2) * amountPack;
+                                discount = (newtotal + totalPrice2) * (decimal)0.1;
+                            }
+                        }
+                        textDis = "ลด 10% ทั้งหมด " + amountPack + "คู่";
+                        order.Discount = textDis;
                     }
+                    order.TotalPrice = decimal.Parse(label11.Text) - discount; ;
+                    context.P_Order.Add(order);
+                    context.SaveChanges();
+                    listView1.Items.Clear();
+                    label11.Text = "0";
+                    text_ID_pay.Text = "";
+                    text_Name_pay.Text = "";
+                    text_Phone_pay.Text = "";
+                    //textBox8 = "";
+
+                    MessageBox.Show("Success");
 
                 }
                 catch (Exception)
                 {
-
+                    MessageBox.Show("กรุณาใส่รหัสลูกค้า");
                 }
-                var result = context.P_Product.Where(p => p.Id == productId).First();
-                result.Amount = result.Amount - 1;
             }
-            string textDis="";
-            decimal discount=0;
-            if (countid1 >= 1 && countid2 >= 1)
-            {
-                int amountPack;
-                decimal newtotal;
-                if (countid1 == countid2)
-                {
-                    amountPack = countid1;
-                    discount = (totalPrice1 + totalPrice2) * (decimal)0.1;
-                }
-                else
-                {
-                    if (countid1 > countid2)
-                    {
-                        amountPack = countid2;
-                        newtotal = (totalPrice1 / countid1) * amountPack;
-                        discount = (newtotal + totalPrice2) * (decimal)0.1;
-                    }
-                    else
-                    {
-                        amountPack = countid1;
-                        newtotal = (totalPrice2 / countid2) * amountPack;
-                        discount = (newtotal + totalPrice2) * (decimal)0.1;
-                    }
-                }
-                textDis = "ลด 10% ทั้งหมด "+amountPack+"คู่";
-                order.Discount = textDis;
-            }
-            order.TotalPrice = decimal.Parse(label11.Text) - discount; ;
-            context.P_Order.Add(order);
-            context.SaveChanges();
-            listView1.Items.Clear();
-            label11.Text = "0";
-            text_ID_pay.Text = "";
-            text_Name_pay.Text = "";
-            text_Phone_pay.Text = "";
-            //textBox8 = "";
-
-            MessageBox.Show("Success");
+            
         }
 
         private void button6_Click_1(object sender, EventArgs e)

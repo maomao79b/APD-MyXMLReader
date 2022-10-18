@@ -67,36 +67,39 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.Product = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.SellReport = new System.Windows.Forms.TabPage();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label14 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.dataGridView4 = new System.Windows.Forms.DataGridView();
+            this.CustomerBuyReport = new System.Windows.Forms.TabPage();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button15 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.dataGridView6 = new System.Windows.Forms.DataGridView();
+            this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.Logout = new System.Windows.Forms.TabPage();
             this.button9 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
-            this.button11 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button12 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.SellReport = new System.Windows.Forms.TabPage();
-            this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.CustomerBuyReport = new System.Windows.Forms.TabPage();
-            this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.dataGridView6 = new System.Windows.Forms.DataGridView();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.pEmployeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -135,9 +138,6 @@
             this.orderDateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalPriceDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.Employee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -145,14 +145,14 @@
             this.Customer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Product.SuspendLayout();
-            this.Logout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             this.SellReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
             this.CustomerBuyReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
+            this.Logout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pEmployeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pCustomerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource)).BeginInit();
@@ -581,31 +581,47 @@
             this.Product.Text = "Product";
             this.Product.Click += new System.EventHandler(this.Product_Click);
             // 
-            // Logout
+            // label6
             // 
-            this.Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.Logout.Controls.Add(this.button9);
-            this.Logout.Location = new System.Drawing.Point(4, 22);
-            this.Logout.Name = "Logout";
-            this.Logout.Size = new System.Drawing.Size(905, 514);
-            this.Logout.TabIndex = 2;
-            this.Logout.Text = "ออกจากระบบ";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(497, 19);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 13);
+            this.label6.TabIndex = 39;
+            this.label6.Text = "ประเภท";
             // 
-            // button9
+            // button12
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(383, 48);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(132, 69);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "ออกจากระบบ";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.Location = new System.Drawing.Point(797, 3);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(100, 41);
+            this.button12.TabIndex = 38;
+            this.button12.Text = "ค้นหา";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // openFileDialog1
+            // comboBox1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(547, 16);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(244, 21);
+            this.comboBox1.TabIndex = 37;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(8, 3);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(100, 41);
+            this.button11.TabIndex = 36;
+            this.button11.Text = "ดึงข้อมูล";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // dataGridView3
             // 
@@ -628,47 +644,6 @@
             this.dataGridView3.Size = new System.Drawing.Size(889, 457);
             this.dataGridView3.TabIndex = 1;
             // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(8, 3);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(100, 41);
-            this.button11.TabIndex = 36;
-            this.button11.Text = "ดึงข้อมูล";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(547, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(244, 21);
-            this.comboBox1.TabIndex = 37;
-            // 
-            // button12
-            // 
-            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(797, 3);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(100, 41);
-            this.button12.TabIndex = 38;
-            this.button12.Text = "ค้นหา";
-            this.button12.UseVisualStyleBackColor = false;
-            this.button12.Click += new System.EventHandler(this.button12_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(497, 19);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(44, 13);
-            this.label6.TabIndex = 39;
-            this.label6.Text = "ประเภท";
-            // 
             // SellReport
             // 
             this.SellReport.BackColor = System.Drawing.Color.Bisque;
@@ -684,6 +659,66 @@
             this.SellReport.Size = new System.Drawing.Size(905, 514);
             this.SellReport.TabIndex = 4;
             this.SellReport.Text = "รายงานการขาย";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(283, 24);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(61, 20);
+            this.numericUpDown1.TabIndex = 6;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(186, 23);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(91, 18);
+            this.label14.TabIndex = 5;
+            this.label14.Text = "จำนวนวันล่าสุด";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CustomFormat = "yyyy/MM/d";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(8, 21);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dateTimePicker1.Size = new System.Drawing.Size(105, 20);
+            this.dateTimePicker1.TabIndex = 4;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 10, 12, 0, 0, 0, 0);
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(849, 21);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 25);
+            this.label13.TabIndex = 3;
+            this.label13.Text = "บาท";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(719, 21);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(54, 25);
+            this.label12.TabIndex = 2;
+            this.label12.Text = "0.00";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(625, 20);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(78, 25);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "ยอดรวม";
             // 
             // dataGridView4
             // 
@@ -706,66 +741,6 @@
             this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.Size = new System.Drawing.Size(889, 450);
             this.dataGridView4.TabIndex = 0;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(625, 20);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 25);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "ยอดรวม";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(719, 21);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(54, 25);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "0.00";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(849, 21);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 25);
-            this.label13.TabIndex = 3;
-            this.label13.Text = "บาท";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "yyyy/MM/d";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(8, 21);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.dateTimePicker1.Size = new System.Drawing.Size(105, 20);
-            this.dateTimePicker1.TabIndex = 4;
-            this.dateTimePicker1.Value = new System.DateTime(2022, 10, 12, 0, 0, 0, 0);
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(186, 23);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 18);
-            this.label14.TabIndex = 5;
-            this.label14.Text = "จำนวนวันล่าสุด";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(283, 24);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(61, 20);
-            this.numericUpDown1.TabIndex = 6;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // CustomerBuyReport
             // 
@@ -793,6 +768,160 @@
             this.CustomerBuyReport.Text = "รายงานการซื้อลูกค้า";
             this.CustomerBuyReport.Click += new System.EventHandler(this.CustomerBuyReport_Click);
             // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(844, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(45, 25);
+            this.label20.TabIndex = 44;
+            this.label20.Text = "บาท";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(714, 21);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(54, 25);
+            this.label21.TabIndex = 43;
+            this.label21.Text = "0.00";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(620, 20);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(78, 25);
+            this.label22.TabIndex = 42;
+            this.label22.Text = "ยอดรวม";
+            // 
+            // button15
+            // 
+            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button15.Location = new System.Drawing.Point(509, 12);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(76, 41);
+            this.button15.TabIndex = 41;
+            this.button15.Text = "ค้นหา";
+            this.button15.UseVisualStyleBackColor = false;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // button13
+            // 
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(278, 12);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(76, 41);
+            this.button13.TabIndex = 40;
+            this.button13.Text = "ค้นหา";
+            this.button13.UseVisualStyleBackColor = false;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(82, 12);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(76, 41);
+            this.button14.TabIndex = 39;
+            this.button14.Text = "ค้นหา";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click_1);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(8, 286);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(93, 13);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "รายการในออเดอร์";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(8, 52);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(118, 13);
+            this.label18.TabIndex = 8;
+            this.label18.Text = "ออเดอร์ทั้งหมดของลูกค้า";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(365, 9);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 13);
+            this.label17.TabIndex = 7;
+            this.label17.Text = "เบอร์โทรลูกค้า";
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(368, 25);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(135, 20);
+            this.textBox14.TabIndex = 6;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(8, 12);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(51, 13);
+            this.label16.TabIndex = 5;
+            this.label16.Text = "รหัสลูกค้า";
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(164, 9);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(45, 13);
+            this.label15.TabIndex = 4;
+            this.label15.Text = "ชื่อลูกค้า";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(167, 25);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(105, 20);
+            this.textBox13.TabIndex = 3;
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(8, 25);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(68, 20);
+            this.textBox12.TabIndex = 2;
+            // 
+            // dataGridView6
+            // 
+            this.dataGridView6.AllowUserToAddRows = false;
+            this.dataGridView6.AllowUserToDeleteRows = false;
+            this.dataGridView6.AutoGenerateColumns = false;
+            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.productIdDataGridViewTextBoxColumn,
+            this.priceDataGridViewTextBoxColumn1,
+            this.amountDataGridViewTextBoxColumn1,
+            this.typeDataGridViewTextBoxColumn1,
+            this.totalPriceDataGridViewTextBoxColumn2});
+            this.dataGridView6.DataSource = this.pOrderItemBindingSource;
+            this.dataGridView6.Location = new System.Drawing.Point(8, 302);
+            this.dataGridView6.Name = "dataGridView6";
+            this.dataGridView6.ReadOnly = true;
+            this.dataGridView6.RowHeadersVisible = false;
+            this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView6.Size = new System.Drawing.Size(889, 204);
+            this.dataGridView6.TabIndex = 1;
+            // 
             // dataGridView5
             // 
             this.dataGridView5.AllowUserToAddRows = false;
@@ -818,129 +947,31 @@
             this.dataGridView5.VisibleChanged += new System.EventHandler(this.dataGridView5_VisibleChanged);
             this.dataGridView5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView5_MouseClick);
             // 
-            // dataGridView6
+            // Logout
             // 
-            this.dataGridView6.AllowUserToAddRows = false;
-            this.dataGridView6.AllowUserToDeleteRows = false;
-            this.dataGridView6.AutoGenerateColumns = false;
-            this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView6.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.productIdDataGridViewTextBoxColumn,
-            this.priceDataGridViewTextBoxColumn1,
-            this.amountDataGridViewTextBoxColumn1,
-            this.typeDataGridViewTextBoxColumn1,
-            this.totalPriceDataGridViewTextBoxColumn2});
-            this.dataGridView6.DataSource = this.pOrderItemBindingSource;
-            this.dataGridView6.Location = new System.Drawing.Point(8, 302);
-            this.dataGridView6.Name = "dataGridView6";
-            this.dataGridView6.ReadOnly = true;
-            this.dataGridView6.RowHeadersVisible = false;
-            this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView6.Size = new System.Drawing.Size(889, 204);
-            this.dataGridView6.TabIndex = 1;
+            this.Logout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Logout.Controls.Add(this.button9);
+            this.Logout.Location = new System.Drawing.Point(4, 22);
+            this.Logout.Name = "Logout";
+            this.Logout.Size = new System.Drawing.Size(905, 514);
+            this.Logout.TabIndex = 2;
+            this.Logout.Text = "ออกจากระบบ";
             // 
-            // textBox12
+            // button9
             // 
-            this.textBox12.Location = new System.Drawing.Point(8, 25);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(68, 20);
-            this.textBox12.TabIndex = 2;
+            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(383, 48);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(132, 69);
+            this.button9.TabIndex = 0;
+            this.button9.Text = "ออกจากระบบ";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
-            // label15
+            // openFileDialog1
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(164, 9);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(45, 13);
-            this.label15.TabIndex = 4;
-            this.label15.Text = "ชื่อลูกค้า";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(8, 52);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(118, 13);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "ออเดอร์ทั้งหมดของลูกค้า";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(8, 286);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(93, 13);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "รายการในออเดอร์";
-            // 
-            // button14
-            // 
-            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(82, 12);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(76, 41);
-            this.button14.TabIndex = 39;
-            this.button14.Text = "ค้นหา";
-            this.button14.UseVisualStyleBackColor = false;
-            this.button14.Click += new System.EventHandler(this.button14_Click_1);
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(167, 25);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(105, 20);
-            this.textBox13.TabIndex = 3;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(8, 12);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(51, 13);
-            this.label16.TabIndex = 5;
-            this.label16.Text = "รหัสลูกค้า";
-            this.label16.Click += new System.EventHandler(this.label16_Click);
-            // 
-            // textBox14
-            // 
-            this.textBox14.Location = new System.Drawing.Point(368, 25);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(135, 20);
-            this.textBox14.TabIndex = 6;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(365, 9);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(74, 13);
-            this.label17.TabIndex = 7;
-            this.label17.Text = "เบอร์โทรลูกค้า";
-            // 
-            // button13
-            // 
-            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(278, 12);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(76, 41);
-            this.button13.TabIndex = 40;
-            this.button13.Text = "ค้นหา";
-            this.button13.UseVisualStyleBackColor = false;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
-            // 
-            // button15
-            // 
-            this.button15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(509, 12);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(76, 41);
-            this.button15.TabIndex = 41;
-            this.button15.Text = "ค้นหา";
-            this.button15.UseVisualStyleBackColor = false;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // pEmployeeBindingSource
             // 
@@ -1237,36 +1268,6 @@
             this.discountDataGridViewTextBoxColumn1.Name = "discountDataGridViewTextBoxColumn1";
             this.discountDataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(844, 21);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(45, 25);
-            this.label20.TabIndex = 44;
-            this.label20.Text = "บาท";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(714, 21);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(54, 25);
-            this.label21.TabIndex = 43;
-            this.label21.Text = "0.00";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(620, 20);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(78, 25);
-            this.label22.TabIndex = 42;
-            this.label22.Text = "ยอดรวม";
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1288,16 +1289,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Product.ResumeLayout(false);
             this.Product.PerformLayout();
-            this.Logout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.SellReport.ResumeLayout(false);
             this.SellReport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
             this.CustomerBuyReport.ResumeLayout(false);
             this.CustomerBuyReport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
+            this.Logout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pEmployeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pCustomerBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource)).EndInit();
