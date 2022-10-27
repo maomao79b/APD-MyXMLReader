@@ -97,7 +97,10 @@ namespace ComputerDIY
                          em.Name.Contains(tx6) ||
                          em.Address.Contains(tx6) ||
                          em.Phone.Contains(tx6) ||
-                         em.Email.Contains(tx6) 
+                         em.Email.Contains(tx6) ||
+                         em.Username.Contains(tx6) ||
+                         em.Password.Contains(tx6) ||
+                         em.Status.Contains(tx6) 
                          select em;
             pEmployeeBindingSource.DataSource = result.ToList();
             //SqlMethods.Like(a.Id, "%/" + tx6 + "/%") ||

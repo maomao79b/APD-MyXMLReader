@@ -45,6 +45,9 @@ namespace ComputerDIY
             em.Address = textBox_Address.Text;
             em.Phone = textBox_Phone.Text;
             em.Email = textBox_Email.Text;
+            em.Username = textBox2.Text;
+            em.Password = textBox1.Text;
+            em.Status = textBox3.Text;
             if (pictureBox.Image == null)
             {
                 em.Image = null;

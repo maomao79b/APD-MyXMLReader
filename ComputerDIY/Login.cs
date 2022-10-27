@@ -23,7 +23,7 @@ namespace ComputerDIY
             string password = textBox2.Text;
             try
             {
-                var result = context.P_Account.Where(a => a.Username == username && a.Password == password)
+                var result = context.P_Employee.Where(a => a.Username == username && a.Password == password)
                     .Select(a => a.Status).First();
                 if(int.Parse(result) == 1)// เจ้าของร้าน
                 {

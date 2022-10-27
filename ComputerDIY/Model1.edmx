@@ -32,6 +32,9 @@
           <Property Name="Phone" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Image" Type="image" />
           <Property Name="Email" Type="varchar" MaxLength="150" />
+          <Property Name="Username" Type="varchar" MaxLength="500" />
+          <Property Name="Password" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="P_Order">
           <Key>
@@ -146,7 +149,6 @@
       <Schema Namespace="APD65_63011212014Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Jack" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="P_Account" EntityType="APD65_63011212014Model.P_Account" />
-          <EntitySet Name="P_Employee" EntityType="APD65_63011212014Model.P_Employee" />
           <EntitySet Name="P_Customer" EntityType="APD65_63011212014Model.P_Customer" />
           <EntitySet Name="P_Order" EntityType="APD65_63011212014Model.P_Order" />
           <EntitySet Name="P_OrderItem" EntityType="APD65_63011212014Model.P_OrderItem" />
@@ -164,6 +166,7 @@
             <End Role="P_OrderItem" EntitySet="P_OrderItem" />
           </AssociationSet>
           <EntitySet Name="P_Promotion" EntityType="APD65_63011212014Model.P_Promotion" />
+          <EntitySet Name="P_Employee" EntityType="APD65_63011212014Model.P_Employee" />
           </EntityContainer>
         <EntityType Name="P_Account">
           <Key>
@@ -172,17 +175,6 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Status" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="P_Employee">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="P_Customer">
           <Key>
@@ -285,6 +277,20 @@
           <Property Name="Product_1" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
           <Property Name="Product_2" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="P_Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -297,18 +303,6 @@
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="P_Employee">
-            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Employee">
-              <MappingFragment StoreEntitySet="P_Employee">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Image" ColumnName="Image" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -366,6 +360,21 @@
               <MappingFragment StoreEntitySet="P_Promotion">
                 <ScalarProperty Name="Product_2" ColumnName="Product_2" />
                 <ScalarProperty Name="Product_1" ColumnName="Product_1" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="P_Employee">
+            <EntityTypeMapping TypeName="APD65_63011212014Model.P_Employee">
+              <MappingFragment StoreEntitySet="P_Employee">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
