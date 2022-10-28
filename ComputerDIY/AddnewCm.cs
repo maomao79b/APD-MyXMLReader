@@ -14,10 +14,10 @@ namespace ComputerDIY
     public partial class AddnewCm : Form
     {
         Jack context = new Jack();
-        Admin admin;
-        public AddnewCm(Admin admin)
+        Object adminAndSales;
+        public AddnewCm(Object adminAndSales)
         {
-            this.admin = admin;
+            this.adminAndSales = adminAndSales;
             InitializeComponent();
         }
 

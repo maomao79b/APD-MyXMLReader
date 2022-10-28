@@ -21,7 +21,7 @@ namespace ComputerDIY
         }
     
         public int Id { get; set; }
-        public int Cid { get; set; }
+        public Nullable<int> Cid { get; set; }
         public string Cname { get; set; }
         public string Phone { get; set; }
         public System.DateTime OrderDate { get; set; }

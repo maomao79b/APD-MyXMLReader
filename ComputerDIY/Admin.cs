@@ -359,15 +359,27 @@ namespace ComputerDIY
 
         private void button12_Click(object sender, EventArgs e)
         {
-            var result = from pro in context.P_Product
-                         where pro.Type == comboBox1.Text
-                         select pro;
-            dataGridView3.DataSource = result.ToList();
+            try
+            {
+                var result = from pro in context.P_Product
+                             where pro.Type == comboBox1.Text
+                             select pro;
+                dataGridView3.DataSource = result.ToList();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            dataGridView3.DataSource = context.P_Product.ToList();
+            try
+            {
+                dataGridView3.DataSource = context.P_Product.ToList();
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -571,6 +583,80 @@ namespace ComputerDIY
         private void Employee_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            string tx22 = textBox22.Text;
+
+            var result = from pro in context.P_Product
+                         where pro.Id.ToString().Contains(tx22)
+                         select pro;
+            pProductBindingSource1.DataSource = result.ToList();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            string tx21 = textBox21.Text;
+
+            var result = from pro in context.P_Product
+                         where pro.Name.Contains(tx21)
+                         select pro;
+            pProductBindingSource1.DataSource = result.ToList();
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            string tx20 = textBox20.Text;
+
+            var result = from pro in context.P_Product
+                         where pro.Detail.Contains(tx20)
+                         select pro;
+            pProductBindingSource1.DataSource = result.ToList();
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            string tx19 = textBox19.Text;
+
+            var result = from pro in context.P_Product
+                         where pro.Type.Contains(tx19)
+                         select pro;
+            pProductBindingSource1.DataSource = result.ToList();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            string tx23 = textBox23.Text;
+
+            var result = from pro in context.P_Product
+                         where pro.Id.ToString().Contains(tx23) ||
+                         pro.Name.Contains(tx23) ||
+                         pro.Detail.Contains(tx23) ||
+                         pro.Type.Contains(tx23)
+                         select pro;
+            pProductBindingSource1.DataSource = result.ToList();
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from order in context.P_Order
+                             where order.Cname == "ลูกค้าทั่วไป"
+                             select order;
+                dataGridView5.DataSource = result.ToList();
+                decimal total = 0;
+                foreach (var item in result)
+                {
+                    total += item.TotalPrice;
+                }
+                label21.Text = total.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ไม่พบข้อมูล");
+            }
         }
 
         //private Image LoadImage(string url)

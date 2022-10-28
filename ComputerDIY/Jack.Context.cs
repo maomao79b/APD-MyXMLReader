@@ -16,7 +16,7 @@ namespace ComputerDIY
     public partial class Jack : DbContext
     {
         public Jack()
-            : base("name=Jack")
+            : base("name=APD65_63011212014Entities1")
         {
         }
     
@@ -27,10 +27,10 @@ namespace ComputerDIY
     
         public virtual DbSet<P_Account> P_Account { get; set; }
         public virtual DbSet<P_Customer> P_Customer { get; set; }
+        public virtual DbSet<P_Employee> P_Employee { get; set; }
         public virtual DbSet<P_Order> P_Order { get; set; }
         public virtual DbSet<P_OrderItem> P_OrderItem { get; set; }
         public virtual DbSet<P_Product> P_Product { get; set; }
         public virtual DbSet<P_Promotion> P_Promotion { get; set; }
-        public virtual DbSet<P_Employee> P_Employee { get; set; }
     }
 }

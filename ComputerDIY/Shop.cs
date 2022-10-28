@@ -20,6 +20,10 @@ namespace ComputerDIY
         Login login;
         Jack context = new Jack();
         public string readQRCode;
+        bool IdChkPay = false;
+        bool SlChkClick = false;
+        bool CmChkClick = false;
+        public bool CmChkStatus = false;
         public Shop(Login login)
         {
             this.login = login;
@@ -28,7 +32,19 @@ namespace ComputerDIY
 
         private void Shop_Load(object sender, EventArgs e)
         {
-
+            try
+            {
+                var result = context.P_Product.ToList();
+                foreach (var item in result)
+                {
+                    if (comboBox1.Items.IndexOf(item.Type) < 0)
+                        comboBox1.Items.Add(item.Type);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("เกิดข้อผิดพลาด");
+            }
         }
 
         private void Shop_FormClosing(object sender, FormClosingEventArgs e)
@@ -176,16 +192,28 @@ namespace ComputerDIY
 
         private void button9_Click(object sender, EventArgs e)
         {
-            try
+            if (SlChkClick)
             {
-                listView1.SelectedItems[0].SubItems[4].Text = textBox11.Text;
-                decimal total = decimal.Parse(textBox11.Text) * decimal.Parse(listView1.SelectedItems[0].SubItems[3].Text);
-                listView1.SelectedItems[0].SubItems[5].Text = total.ToString();
-                label11.Text = calculateTotal(listView1.Items).ToString();
+                if(textBox11.Text == "")
+                {
+                    MessageBox.Show("กรุณาใส่จำนวนสินค้า");
+                }
+                try
+                {
+                    int test = int.Parse(textBox11.Text);
+                    listView1.SelectedItems[0].SubItems[4].Text = textBox11.Text;
+                    decimal total = decimal.Parse(textBox11.Text) * decimal.Parse(listView1.SelectedItems[0].SubItems[3].Text);
+                    listView1.SelectedItems[0].SubItems[5].Text = total.ToString();
+                    label11.Text = calculateTotal(listView1.Items).ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("กรุณาใส่เป็นตัวเลขเท่านั้น");
+                }
             }
-            catch (Exception)
+            else
             {
-                
+                MessageBox.Show("กรุณาเลือกสินค้าที่ต้องการเปลี่ยนแปลง");
             }
         }
 
@@ -203,10 +231,10 @@ namespace ComputerDIY
                 var f = context.P_Product.Where(p => p.Id == id).First();
                 textBox8.Text = f.Detail;
                 pictureBox1.Image = LoadImage(f.Image);
+                SlChkClick = true;
             }
             catch (Exception)
             {
-
             }
             
         }
@@ -226,25 +254,38 @@ namespace ComputerDIY
 
         private void btnAddId_Click(object sender, EventArgs e)
         {
-            try
+            var result = listView1.FindItemWithText(textBox_addIdProduct.Text);
+            if(result != null)
             {
-                int id = int.Parse(textBox_addIdProduct.Text);
-                var f = context.P_Product.Where(p => p.Id == id).First();
-                string[] items = new string[]
-                {
-                    textBox_addIdProduct.Text,
-                    f.Name,
-                    f.Type,
-                    f.Price.ToString(),
-                    "1",
-                    f.Price.ToString()
-                };
-                listView1.Items.Add(new ListViewItem(items));
+                decimal amount = decimal.Parse(result.SubItems[4].Text) + 1;
+                result.SubItems[4].Text = amount.ToString();
+                decimal total = amount * decimal.Parse(result.SubItems[3].Text);
+                result.SubItems[5].Text = total.ToString();
                 label11.Text = calculateTotal(listView1.Items).ToString();
+
             }
-            catch (Exception)
+            else
             {
-                
+                try
+                {
+                    int id = int.Parse(textBox_addIdProduct.Text);
+                    var f = context.P_Product.Where(p => p.Id == id).First();
+                    string[] items = new string[]
+                    {
+                        textBox_addIdProduct.Text,
+                        f.Name,
+                        f.Type,
+                        f.Price.ToString(),
+                        "1",
+                        f.Price.ToString()
+                    };
+                    listView1.Items.Add(new ListViewItem(items));
+                    label11.Text = calculateTotal(listView1.Items).ToString();
+                }
+                catch (Exception)
+                {
+
+                }
             }
         }
 
@@ -256,102 +297,165 @@ namespace ComputerDIY
             }
             else
             {
-                try
+                if(text_ID_pay.Text == "") //ลูกค้าทั่วไป
                 {
-                    //string nameProduct = textBox3.Text;
-                    //var result2 = context.AmazonProducts.Where(p => p.ProductName == nameProduct).First();
-                    P_Order order = new P_Order();
-                    order.Cid = int.Parse(text_ID_pay.Text);
-                    order.Cname = text_Name_pay.Text;
-                    order.Phone = text_Phone_pay.Text;
-                    order.OrderDate = DateTime.Now;
-                    //order.TotalPrice = decimal.Parse(label11.Text);
-                    //context.P_Order.Add(order);
-                    //Console.WriteLine(order.Id.ToString());
-                    int countid1 = 0;
-                    int countid2 = 0;
-                    decimal totalPrice1 = 0;
-                    decimal totalPrice2 = 0;
-                    var promotion = context.P_Promotion.First();
-                    foreach (ListViewItem item in listView1.Items)
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+                    result = MessageBox.Show("ยืนยันการชำระเงินใช่หรือไม่", "แจ้งเตือน", buttons);
+                    if (result == System.Windows.Forms.DialogResult.Yes)
                     {
-                        P_OrderItem orderItem = new P_OrderItem();
-                        int productId = int.Parse(item.SubItems[0].Text);
-                        orderItem.OrderId = order.Id;
-                        orderItem.ProductId = productId;
-                        //Console.WriteLine(item.SubItems[3].Text);
-                        orderItem.Price = decimal.Parse(item.SubItems[3].Text);
-                        orderItem.Amount = int.Parse(item.SubItems[4].Text);
-                        orderItem.Type = item.SubItems[2].Text;
-                        orderItem.TotalPrice = decimal.Parse(item.SubItems[5].Text);
-                        context.P_OrderItem.Add(orderItem);
-                        //Console.WriteLine(item.SubItems[0].Text);
                         try
                         {
-                            if (promotion.Product_1 == item.SubItems[0].Text)
+                            int countid1 = 0;
+                            int countid2 = 0;
+                            decimal totalPrice1 = 0;
+                            decimal totalPrice2 = 0;
+                            var promotion = context.P_Promotion.First();
+                            foreach (ListViewItem item in listView1.Items)
                             {
-                                countid1 += int.Parse(item.SubItems[4].Text);
-                                totalPrice1 += decimal.Parse(item.SubItems[5].Text);
-                            }
-                            else if (promotion.Product_2 == item.SubItems[0].Text)
-                            {
-                                countid2 += int.Parse(item.SubItems[4].Text);
-                                totalPrice2 += decimal.Parse(item.SubItems[5].Text);
-                            }
+                                try
+                                {
+                                    if (promotion.Product_1 == item.SubItems[0].Text)
+                                    {
+                                        countid1 += int.Parse(item.SubItems[4].Text);
+                                        totalPrice1 += decimal.Parse(item.SubItems[5].Text);
+                                    }
+                                    else if (promotion.Product_2 == item.SubItems[0].Text)
+                                    {
+                                        countid2 += int.Parse(item.SubItems[4].Text);
+                                        totalPrice2 += decimal.Parse(item.SubItems[5].Text);
+                                    }
 
+                                }
+                                catch (Exception)
+                                {
+                                }
+                            }
+                            string textDis = "";
+                            decimal discount = 0;
+                            if (countid1 >= 1 && countid2 >= 1)
+                            {
+                                int amountPack;
+                                decimal newtotal;
+                                if (countid1 == countid2)
+                                {
+                                    amountPack = countid1;
+                                    discount = (totalPrice1 + totalPrice2) * (decimal)0.1;
+                                }
+                                else
+                                {
+                                    if (countid1 > countid2)
+                                    {
+                                        amountPack = countid2;
+                                        newtotal = (totalPrice1 / countid1) * amountPack;
+                                        discount = (newtotal + totalPrice2) * (decimal)0.1;
+                                    }
+                                    else
+                                    {
+                                        amountPack = countid1;
+                                        newtotal = (totalPrice2 / countid2) * amountPack;
+                                        discount = (newtotal + totalPrice2) * (decimal)0.1;
+                                    }
+                                }
+                                textDis = "ลด 10% ทั้งหมด " + amountPack + " คู่";
+                            }
+                            decimal newPrice = decimal.Parse(label11.Text) - discount;
+                            PayBill paybill = new PayBill(this, newPrice, textDis);
+                            paybill.ShowDialog();
                         }
                         catch (Exception)
                         {
-
                         }
-                        var result = context.P_Product.Where(p => p.Id == productId).First();
-                        result.Amount = result.Amount - 1;
                     }
-                    string textDis = "";
-                    decimal discount = 0;
-                    if (countid1 >= 1 && countid2 >= 1)
+                }
+                else
+                {
+                    try
                     {
-                        int amountPack;
-                        decimal newtotal;
-                        if (countid1 == countid2)
+                        if (IdChkPay)
                         {
-                            amountPack = countid1;
-                            discount = (totalPrice1 + totalPrice2) * (decimal)0.1;
+                            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                            DialogResult result;
+                            result = MessageBox.Show("ยืนยันการชำระเงินใช่หรือไม่", "แจ้งเตือน", buttons);
+                            if (result == System.Windows.Forms.DialogResult.Yes)
+                            {
+                                CmChkStatus = true;
+                                try
+                                {
+                                    int countid1 = 0;
+                                    int countid2 = 0;
+                                    decimal totalPrice1 = 0;
+                                    decimal totalPrice2 = 0;
+                                    var promotion = context.P_Promotion.First();
+                                    foreach (ListViewItem item in listView1.Items)
+                                    {
+                                        try
+                                        {
+                                            if (promotion.Product_1 == item.SubItems[0].Text)
+                                            {
+                                                countid1 += int.Parse(item.SubItems[4].Text);
+                                                totalPrice1 += decimal.Parse(item.SubItems[5].Text);
+                                            }
+                                            else if (promotion.Product_2 == item.SubItems[0].Text)
+                                            {
+                                                countid2 += int.Parse(item.SubItems[4].Text);
+                                                totalPrice2 += decimal.Parse(item.SubItems[5].Text);
+                                            }
+
+                                        }
+                                        catch (Exception)
+                                        {
+                                        }
+                                    }
+                                    string textDis = "";
+                                    decimal discount = 0;
+                                    if (countid1 >= 1 && countid2 >= 1)
+                                    {
+                                        int amountPack;
+                                        decimal newtotal;
+                                        if (countid1 == countid2)
+                                        {
+                                            amountPack = countid1;
+                                            discount = (totalPrice1 + totalPrice2) * (decimal)0.1;
+                                        }
+                                        else
+                                        {
+                                            if (countid1 > countid2)
+                                            {
+                                                amountPack = countid2;
+                                                newtotal = (totalPrice1 / countid1) * amountPack;
+                                                discount = (newtotal + totalPrice2) * (decimal)0.1;
+                                            }
+                                            else
+                                            {
+                                                amountPack = countid1;
+                                                newtotal = (totalPrice2 / countid2) * amountPack;
+                                                discount = (newtotal + totalPrice2) * (decimal)0.1;
+                                            }
+                                        }
+                                        textDis = "ลด 10% ทั้งหมด " + amountPack + " คู่";
+                                    }
+                                    decimal newPrice = decimal.Parse(label11.Text) - discount;
+                                    PayBill paybill = new PayBill(this, newPrice, textDis);
+                                    paybill.ShowDialog();
+                                }
+                                catch (Exception)
+                                {
+                                }
+                            }
+
                         }
                         else
                         {
-                            if (countid1 > countid2)
-                            {
-                                amountPack = countid2;
-                                newtotal = (totalPrice1 / countid1) * amountPack;
-                                discount = (newtotal + totalPrice2) * (decimal)0.1;
-                            }
-                            else
-                            {
-                                amountPack = countid1;
-                                newtotal = (totalPrice2 / countid2) * amountPack;
-                                discount = (newtotal + totalPrice2) * (decimal)0.1;
-                            }
+                            MessageBox.Show("กรุณากดตรวจสอบ ID");
                         }
-                        textDis = "ลด 10% ทั้งหมด " + amountPack + "คู่";
-                        order.Discount = textDis;
+
                     }
-                    order.TotalPrice = decimal.Parse(label11.Text) - discount; ;
-                    context.P_Order.Add(order);
-                    context.SaveChanges();
-                    listView1.Items.Clear();
-                    label11.Text = "0";
-                    text_ID_pay.Text = "";
-                    text_Name_pay.Text = "";
-                    text_Phone_pay.Text = "";
-                    //textBox8 = "";
+                    catch (Exception)
+                    {
+                        MessageBox.Show("กรุณาใส่ ID เป็นตัวเลขเท่านั้น");
+                    }
 
-                    MessageBox.Show("Success");
-
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("กรุณาใส่รหัสลูกค้า");
                 }
             }
             
@@ -359,22 +463,121 @@ namespace ComputerDIY
 
         private void button6_Click_1(object sender, EventArgs e)
         {
-            try
+            var result = listView1.FindItemWithText(textBox3.Text);
+            if (result != null)
             {
-                int id = int.Parse(textBox3.Text);
-                var f = context.P_Product.Where(p => p.Id == id).First();
-                string[] items = new string[]
-                {
-                    textBox3.Text,
-                    f.Name,
-                    f.Type,
-                    f.Price.ToString(),
-                    "1",
-                    f.Price.ToString()
-                };
-                listView1.Items.Add(new ListViewItem(items));
+                decimal amount = decimal.Parse(result.SubItems[4].Text) + 1;
+                result.SubItems[4].Text = amount.ToString();
+                decimal total = amount * decimal.Parse(result.SubItems[3].Text);
+                result.SubItems[5].Text = total.ToString();
                 label11.Text = calculateTotal(listView1.Items).ToString();
                 MessageBox.Show("เพิ่มสำเร็จ");
+            }
+            else
+            {
+                try
+                {
+                    int id = int.Parse(textBox3.Text);
+                    var f = context.P_Product.Where(p => p.Id == id).First();
+                    string[] items = new string[]
+                    {
+                        textBox3.Text,
+                        f.Name,
+                        f.Type,
+                        f.Price.ToString(),
+                        "1",
+                        f.Price.ToString()
+                    };
+                    listView1.Items.Add(new ListViewItem(items));
+                    label11.Text = calculateTotal(listView1.Items).ToString();
+                    MessageBox.Show("เพิ่มสำเร็จ");
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if(text_ID_pay.Text == "")
+            {
+                MessageBox.Show("กรุณากรอก ID");
+            }
+            else
+            {
+                try
+                {
+                    int ID = int.Parse(text_ID_pay.Text);
+                    try
+                    {
+                        var result = context.P_Customer.Where(cm => cm.Id == ID).First();
+                        text_Name_pay.Text = result.Name;
+                        text_Phone_pay.Text = result.Phone;
+                        IdChkPay = true;
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("ไม่พบ ID ลูกค้า");
+                        text_ID_pay.Text = "";
+                        text_Name_pay.Text = "";
+                        text_Phone_pay.Text = "";
+                        IdChkPay = false;
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("กรุณากรอก ID เป็นตัวเลขเท่านั้น");
+                }
+            }
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            text_ID_pay.Text = "";
+            text_Name_pay.Text = "";
+            text_Phone_pay.Text = "";
+            IdChkPay = false;
+            CmChkStatus = false;
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                pCustomerBindingSource.DataSource = context.P_Customer.ToList();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ดึงข้อมูลไม่สำเร็จ");
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            string tx12 = textBox12.Text;
+
+            var result = from cm in context.P_Customer
+                         where cm.Id.ToString().Contains(tx12) ||
+                         cm.Name.Contains(tx12) ||
+                         cm.Address.Contains(tx12) ||
+                         cm.Phone.Contains(tx12)
+                         select cm;
+            pCustomerBindingSource.DataSource = result.ToList();
+        }
+
+        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                textBox18.Text = dataGridView2.SelectedRows[0].Cells[0].Value.ToString();
+                CmChkClick = true;
             }
             catch (Exception)
             {
@@ -382,9 +585,237 @@ namespace ComputerDIY
             }
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
+        private void button16_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                AddnewCm addnewcm = new AddnewCm(this);
+                addnewcm.ShowDialog();
+                pCustomerBindingSource.DataSource = context.P_Customer.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (CmChkClick)
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show("ต้องการลบใช่หรือไม่", "แจ้งเตือน", buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        int cm_id = int.Parse(textBox18.Text);
+                        var result2 = from em in context.P_Customer
+                                      where em.Id == cm_id
+                                      select em;
+                        context.P_Customer.Remove(result2.First());
+                        context.SaveChanges();
+                        MessageBox.Show("Remove Success");
+                        pCustomerBindingSource.DataSource = context.P_Customer.ToList();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Remove Failed");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("กรุณาเลือกข้อมูล");
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (CmChkClick)
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show("ยืนยันการเปลี่ยนใช่หรือไม่", "แจ้งเตือน", buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    try
+                    {
+                        int Id = int.Parse(textBox18.Text);
+                        try
+                        {
+                            context.SaveChanges();
+                            MessageBox.Show("Save Success");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Save Failed");
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("ไม่เจอข้อมูล");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("กรุณาเลือกข้อมูล");
+            }
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView3.DataSource = context.P_Product.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from pro in context.P_Product
+                             where pro.Type == comboBox1.Text
+                             select pro;
+                dataGridView3.DataSource = result.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (textBox21.Text == "")
+            {
+                MessageBox.Show("กรุณากรอก ID");
+            }
+            else
+            {
+                try
+                {
+                    int cid = int.Parse(textBox21.Text);
+                    var result = from order in context.P_Order
+                                 where order.Cid == cid
+                                 select order;
+                    dataGridView5.DataSource = result.ToList();
+                    decimal total = 0;
+                    foreach (var item in result)
+                    {
+                        total += item.TotalPrice;
+                    }
+                    label27.Text = total.ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("กรุณากรอก ID (เป็นตัวเลขเท่านั้น)");
+                }
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (textBox20.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกชื่อ");
+            }
+            else
+            {
+                try
+                {
+                    var result = from order in context.P_Order
+                                 where order.P_Customer.Name == textBox20.Text
+                                 select order;
+                    dataGridView5.DataSource = result.ToList();
+                    decimal total = 0;
+                    foreach (var item in result)
+                    {
+                        total += item.TotalPrice;
+                    }
+                    label27.Text = total.ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("ไม่พบข้อมูล");
+                }
+            }
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            if (textBox19.Text == "")
+            {
+                MessageBox.Show("กรุณากรอกเบอร์โทร");
+            }
+            else
+            {
+                try
+                {
+                    var result = from order in context.P_Order
+                                 where order.P_Customer.Phone == textBox19.Text
+                                 select order;
+                    dataGridView5.DataSource = result.ToList();
+                    decimal total = 0;
+                    foreach (var item in result)
+                    {
+                        total += item.TotalPrice;
+                    }
+                    label27.Text = total.ToString();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("ไม่พบข้อมูล");
+                }
+            }
+        }
+
+        private void dataGridView5_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                int oid = int.Parse(dataGridView5.SelectedRows[0].Cells[0].Value.ToString());
+                var result = from orderItems in context.P_OrderItem
+                             where orderItems.OrderId == oid
+                             select orderItems;
+                dataGridView6.DataSource = result.ToList();
+
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from order in context.P_Order
+                             where order.Cname == "ลูกค้าทั่วไป"
+                             select order;
+                dataGridView5.DataSource = result.ToList();
+                decimal total = 0;
+                foreach (var item in result)
+                {
+                    total += item.TotalPrice;
+                }
+                label27.Text = total.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("ไม่พบข้อมูล");
+            }
         }
     }
 }

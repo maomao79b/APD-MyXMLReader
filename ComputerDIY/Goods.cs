@@ -32,11 +32,26 @@ namespace ComputerDIY
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var result = context.P_Product.ToList();
-            foreach (var item in result)
+            //var result = context.P_Product.ToList();
+            //foreach (var item in result)
+            //{
+            //    if (comboBox1.Items.IndexOf(item.Type) < 0)
+            //        comboBox1.Items.Add(item.Type);
+            //}
+            try
             {
-                if (comboBox1.Items.IndexOf(item.Type) < 0)
-                    comboBox1.Items.Add(item.Type);
+                var result = context.P_Product.ToList();
+                foreach (var item in result)
+                {
+                    if (comboBox1.Items.IndexOf(item.Type) < 0)
+                        comboBox1.Items.Add(item.Type);
+                    if (comboBox2.Items.IndexOf(item.Type) < 0)
+                        comboBox2.Items.Add(item.Type);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("เกิดข้อผิดพลาด");
             }
         }
         private Image LoadImage(string url)
@@ -626,6 +641,31 @@ namespace ComputerDIY
         {
             AddIdproductFromWeb addnewIdProduct = new AddIdproductFromWeb(this);
             addnewIdProduct.ShowDialog();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                dataGridView3.DataSource = context.P_Product.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from pro in context.P_Product
+                             where pro.Type == comboBox2.Text
+                             select pro;
+                dataGridView3.DataSource = result.ToList();
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

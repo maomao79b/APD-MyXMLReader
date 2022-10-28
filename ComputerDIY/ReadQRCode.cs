@@ -20,11 +20,11 @@ namespace ComputerDIY
         VideoCaptureDevice videoIn;
         Shop shop;
         Jack context = new Jack();
+        bool open = false;
         public ReadQRCode(Shop shop)
         {
             this.shop = shop;
             InitializeComponent();
-            this.shop = shop;
         }
 
         private void ReadQRCode_Load(object sender, EventArgs e)
@@ -36,16 +36,24 @@ namespace ComputerDIY
 
         private void btnON_Click(object sender, EventArgs e)
         {
-            try
+            if (!open)
             {
-                videoIn = new VideoCaptureDevice(webcams[comboBox_select.SelectedIndex].MonikerString);
-                videoSourcePlayer.VideoSource = videoIn;
-                videoSourcePlayer.Start();
-                timer1.Start();    
+                try
+                {
+                    videoIn = new VideoCaptureDevice(webcams[comboBox_select.SelectedIndex].MonikerString);
+                    videoSourcePlayer.VideoSource = videoIn;
+                    videoSourcePlayer.Start();
+                    timer1.Start();
+                    open = true;
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Selected Camera");
+                }
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Selected Camera");
+                MessageBox.Show("กล้องเปิดอยู่");
             }
           
         }
@@ -54,6 +62,7 @@ namespace ComputerDIY
         {
             if(videoIn != null && videoIn.IsRunning)
             {
+                open = false;
                 videoIn.Stop();
                 timer1.Stop();
             }
@@ -65,29 +74,62 @@ namespace ComputerDIY
             if(capture != null)
             {
                 BarcodeReader reader = new BarcodeReader();
-                var result = reader.Decode(capture);
-                if (result != null)
+                var result1 = reader.Decode(capture);
+                if (result1 != null)
                 {
-                    try
+                    var result = shop.listView1.FindItemWithText(result1.Text);
+                    if (result != null)
                     {
-                        int id = int.Parse(result.Text);
-                        var f = context.P_Product.Where(p => p.Id == id).First();
-                        string[] items = new string[]
+                        decimal amount = decimal.Parse(result.SubItems[4].Text) + 1;
+                        result.SubItems[4].Text = amount.ToString();
+                        decimal total = amount * decimal.Parse(result.SubItems[3].Text);
+                        result.SubItems[5].Text = total.ToString();
+                        shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
+
+                    }
+                    else
+                    {
+                        try
                         {
-                            result.Text,
-                            f.Name,
-                            f.Type,
-                            f.Price.ToString(),
-                            "1",
-                            f.Price.ToString()
+                            int id = int.Parse(result1.Text);
+                            var f = context.P_Product.Where(p => p.Id == id).First();
+                            string[] items = new string[]
+                            {
+                                result1.Text,
+                                f.Name,
+                                f.Type,
+                                f.Price.ToString(),
+                                "1",
+                                f.Price.ToString()
                             };
                             shop.listView1.Items.Add(new ListViewItem(items));
                             shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
+                        }
+                        catch (Exception)
+                        {
+
+                        }
                     }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("ไม่มีสินค้า");
-                    }
+                    //try
+                    //{
+                    //    int id = int.Parse(result.Text);
+                    //    var f = context.P_Product.Where(p => p.Id == id).First();
+                    //    string[] items = new string[]
+                    //    {
+                    //        result.Text,
+                    //        f.Name,
+                    //        f.Type,
+                    //        f.Price.ToString(),
+                    //        "1",
+                    //        f.Price.ToString()
+                    //        };
+                    //        shop.listView1.Items.Add(new ListViewItem(items));
+                    //        shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
+                    //}
+                    //catch (Exception)
+                    //{
+                    //    MessageBox.Show("ไม่มีสินค้า");
+                    //}
                 }
                     //Console.WriteLine(result.Text);
             }
