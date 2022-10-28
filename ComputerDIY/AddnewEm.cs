@@ -39,27 +39,54 @@ namespace ComputerDIY
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            P_Employee em = new P_Employee();
-            em.Id = int.Parse(textBox_id.Text);
-            em.Name = textBox_Name.Text;
-            em.Address = textBox_Address.Text;
-            em.Phone = textBox_Phone.Text;
-            em.Email = textBox_Email.Text;
-            em.Username = textBox2.Text;
-            em.Password = textBox1.Text;
-            em.Status = textBox3.Text;
-            if (pictureBox.Image == null)
+            try
             {
-                em.Image = null;
+                int Id = int.Parse(textBox_id.Text); 
+                try
+                {
+                    context.P_Employee.Where(em2 => em2.Id == Id).First();
+                    MessageBox.Show("ID นี้มีการใช้งานแล้ว");
+                }
+                catch (Exception)
+                {
+                    try
+                    {
+                        context.P_Employee.Where(em2 => em2.Username == textBox2.Text).First();
+                        MessageBox.Show("Username นี้มีการใช้งานแล้ว");
+                    }
+                    catch (Exception)
+                    {
+                        P_Employee em = new P_Employee();
+                        em.Id = Id;
+                        em.Name = textBox_Name.Text;
+                        em.Address = textBox_Address.Text;
+                        em.Phone = textBox_Phone.Text;
+                        em.Email = textBox_Email.Text;
+                        em.Username = textBox2.Text;
+                        em.Password = textBox1.Text;
+                        em.Status = textBox3.Text;
+                        if (pictureBox.Image == null)
+                        {
+                            em.Image = null;
+                        }
+                        else
+                        {
+                            em.Image = ConvertImageToByteArray(this.path_image);
+                        }
+                        Console.WriteLine("HiBor");
+                        context.P_Employee.Add(em);
+                        context.SaveChanges();
+                        MessageBox.Show("Add Success");
+                        this.Close();
+                    }
+
+                }
+
             }
-            else
+            catch (Exception)
             {
-                em.Image = ConvertImageToByteArray(this.path_image);
+                MessageBox.Show("กรุณาใส่ ID(ตัวเลขเท่านั้น)");
             }
-            context.P_Employee.Add(em);
-            context.SaveChanges();
-            MessageBox.Show("Add Success");
-            this.Close();
         }
 
         public static byte[] ConvertImageToByteArray(string imagePath)

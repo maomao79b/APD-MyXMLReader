@@ -871,6 +871,7 @@
             this.ClientSize = new System.Drawing.Size(1204, 680);
             this.Controls.Add(this.tabControl1);
             this.Name = "Shop";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Shop_FormClosing);
             this.Load += new System.EventHandler(this.Shop_Load);
             this.tabControl1.ResumeLayout(false);

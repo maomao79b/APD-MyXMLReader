@@ -45,7 +45,7 @@ namespace ComputerDIY
             }
             catch (Exception)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Username หรือ Password ไม่ถูกต้อง");
             }
         }
 

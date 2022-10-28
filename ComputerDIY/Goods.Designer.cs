@@ -56,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button9 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.textBox15 = new System.Windows.Forms.TextBox();
@@ -120,7 +121,6 @@
             this.product2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button7 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -437,6 +437,18 @@
             this.tabPage2.Text = "ManageGoods";
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.Color.Chartreuse;
+            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button9.Location = new System.Drawing.Point(173, 467);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(98, 47);
+            this.button9.TabIndex = 33;
+            this.button9.Text = "เพิ่มสินค้า";
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
@@ -596,6 +608,7 @@
             this.textBox11.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pProductBindingSource, "Id", true));
             this.textBox11.Location = new System.Drawing.Point(596, 66);
             this.textBox11.Name = "textBox11";
+            this.textBox11.ReadOnly = true;
             this.textBox11.Size = new System.Drawing.Size(266, 20);
             this.textBox11.TabIndex = 10;
             // 
@@ -1071,18 +1084,6 @@
             this.button7.Text = "ออกจากระบบ";
             this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.Color.Chartreuse;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(173, 467);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(98, 47);
-            this.button9.TabIndex = 33;
-            this.button9.Text = "เพิ่มสินค้า";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // Goods
             // 
