@@ -77,61 +77,70 @@ namespace ComputerDIY
                 var result1 = reader.Decode(capture);
                 if (result1 != null)
                 {
-                    var result = shop.listView1.FindItemWithText(result1.Text);
-                    if (result != null)
+                    try
                     {
-                        decimal amount = decimal.Parse(result.SubItems[4].Text) + 1;
-                        result.SubItems[4].Text = amount.ToString();
-                        decimal total = amount * decimal.Parse(result.SubItems[3].Text);
-                        result.SubItems[5].Text = total.ToString();
-                        shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
-
-                    }
-                    else
-                    {
-                        try
+                        int id = int.Parse(result1.Text);//รหัสสินค้า
+                        var result2 = context.P_Product.Where(pd => pd.Id == id).First();
+                        if (result2.Amount == 0)
                         {
-                            int id = int.Parse(result1.Text);
-                            var f = context.P_Product.Where(p => p.Id == id).First();
-                            string[] items = new string[]
+                            MessageBox.Show("สินค้าหมด");
+                        }
+                        else
+                        {
+                            try
                             {
-                                result1.Text,
-                                f.Name,
-                                f.Type,
-                                f.Price.ToString(),
-                                "1",
-                                f.Price.ToString()
-                            };
-                            shop.listView1.Items.Add(new ListViewItem(items));
-                            shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
-                        }
-                        catch (Exception)
-                        {
+                                var result = shop.listView1.FindItemWithText(result1.Text);
+                                if (result != null)
+                                {
+                                    int ChkAmoun = int.Parse(result.SubItems[4].Text) + 1;
+                                    if (ChkAmoun > result2.Amount)
+                                    {
+                                        MessageBox.Show("จำนวนสินค้าไม่เพียงพอ สินค้า ID: " + id + " มีจำนวน " + result2.Amount + " ชิ้น");
+                                    }
+                                    else
+                                    {
+                                        decimal amount = decimal.Parse(result.SubItems[4].Text) + 1;
+                                        result.SubItems[4].Text = amount.ToString();
+                                        decimal total = amount * decimal.Parse(result.SubItems[3].Text);
+                                        result.SubItems[5].Text = total.ToString();
+                                        shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
+                                    }
 
+                                }
+                                else
+                                {
+                                    try
+                                    {
+                                        var f = context.P_Product.Where(p => p.Id == id).First();
+                                        string[] items = new string[]
+                                        {
+                                            result1.Text,
+                                            f.Name,
+                                            f.Type,
+                                            f.Price.ToString(),
+                                            "1",
+                                            f.Price.ToString()
+                                        };
+                                        shop.listView1.Items.Add(new ListViewItem(items));
+                                        shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
+                                    }
+                                    catch (Exception)
+                                    {
+
+                                    }
+                                }
+                            }
+                            catch (Exception)
+                            {
+                                MessageBox.Show("มีข้อผิดพลาดโปรดแสกนใหม่");
+                            }
                         }
                     }
-                    //try
-                    //{
-                    //    int id = int.Parse(result.Text);
-                    //    var f = context.P_Product.Where(p => p.Id == id).First();
-                    //    string[] items = new string[]
-                    //    {
-                    //        result.Text,
-                    //        f.Name,
-                    //        f.Type,
-                    //        f.Price.ToString(),
-                    //        "1",
-                    //        f.Price.ToString()
-                    //        };
-                    //        shop.listView1.Items.Add(new ListViewItem(items));
-                    //        shop.label11.Text = shop.calculateTotal(shop.listView1.Items).ToString();
-                    //}
-                    //catch (Exception)
-                    //{
-                    //    MessageBox.Show("ไม่มีสินค้า");
-                    //}
+                    catch (Exception)
+                    {
+                        MessageBox.Show("ไม่มีสินค้านี้");
+                    }
                 }
-                    //Console.WriteLine(result.Text);
             }
         }
     }

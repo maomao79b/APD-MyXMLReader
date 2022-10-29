@@ -120,6 +120,7 @@
             this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.CustomerBuyReport = new System.Windows.Forms.TabPage();
+            this.button22 = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -176,7 +177,7 @@
             this.Logout = new System.Windows.Forms.TabPage();
             this.button9 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.button22 = new System.Windows.Forms.Button();
+            this.button23 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Employee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pEmployeeBindingSource)).BeginInit();
@@ -833,6 +834,7 @@
             // Product
             // 
             this.Product.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.Product.Controls.Add(this.button23);
             this.Product.Controls.Add(this.label6);
             this.Product.Controls.Add(this.button12);
             this.Product.Controls.Add(this.comboBox1);
@@ -1141,6 +1143,18 @@
             this.CustomerBuyReport.TabIndex = 5;
             this.CustomerBuyReport.Text = "รายงานการซื้อลูกค้า";
             this.CustomerBuyReport.Click += new System.EventHandler(this.CustomerBuyReport_Click);
+            // 
+            // button22
+            // 
+            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button22.Location = new System.Drawing.Point(529, 12);
+            this.button22.Name = "button22";
+            this.button22.Size = new System.Drawing.Size(107, 41);
+            this.button22.TabIndex = 45;
+            this.button22.Text = "ค้นหาลูกค้าทั่วไป";
+            this.button22.UseVisualStyleBackColor = false;
+            this.button22.Click += new System.EventHandler(this.button22_Click);
             // 
             // label20
             // 
@@ -1701,17 +1715,17 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // button22
+            // button23
             // 
-            this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button22.Location = new System.Drawing.Point(529, 12);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(107, 41);
-            this.button22.TabIndex = 45;
-            this.button22.Text = "ค้นหาลูกค้าทั่วไป";
-            this.button22.UseVisualStyleBackColor = false;
-            this.button22.Click += new System.EventHandler(this.button22_Click);
+            this.button23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button23.Location = new System.Drawing.Point(125, 3);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(135, 41);
+            this.button23.TabIndex = 46;
+            this.button23.Text = "สินค้าที่หมด";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // Admin
             // 
@@ -1907,5 +1921,6 @@
         private System.Windows.Forms.Button button21;
         private System.Windows.Forms.BindingSource pProductBindingSource1;
         private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button button23;
     }
 }

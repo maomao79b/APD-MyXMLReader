@@ -118,6 +118,7 @@
             this.button21 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.Sell = new System.Windows.Forms.TabPage();
+            this.button25 = new System.Windows.Forms.Button();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
@@ -136,6 +137,7 @@
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
             this.Logout = new System.Windows.Forms.TabPage();
             this.button13 = new System.Windows.Forms.Button();
+            this.button26 = new System.Windows.Forms.Button();
             this.pProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -170,7 +172,7 @@
             this.totalPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.button25 = new System.Windows.Forms.Button();
+            this.button27 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.shopping.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -212,6 +214,7 @@
             // shopping
             // 
             this.shopping.BackColor = System.Drawing.Color.SkyBlue;
+            this.shopping.Controls.Add(this.button26);
             this.shopping.Controls.Add(this.groupBox2);
             this.shopping.Controls.Add(this.label13);
             this.shopping.Controls.Add(this.textBox11);
@@ -1076,6 +1079,7 @@
             // สินค้าคงคลัง
             // 
             this.สินค้าคงคลัง.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.สินค้าคงคลัง.Controls.Add(this.button27);
             this.สินค้าคงคลัง.Controls.Add(this.label25);
             this.สินค้าคงคลัง.Controls.Add(this.button20);
             this.สินค้าคงคลัง.Controls.Add(this.comboBox1);
@@ -1175,6 +1179,18 @@
             this.Sell.Size = new System.Drawing.Size(1196, 654);
             this.Sell.TabIndex = 5;
             this.Sell.Text = "รายงานการซื้อลูกค้า";
+            // 
+            // button25
+            // 
+            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button25.Location = new System.Drawing.Point(659, 11);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(151, 41);
+            this.button25.TabIndex = 61;
+            this.button25.Text = "ค้นหาลูกค้าทั่วไป";
+            this.button25.UseVisualStyleBackColor = false;
+            this.button25.Click += new System.EventHandler(this.button25_Click);
             // 
             // label26
             // 
@@ -1376,6 +1392,18 @@
             this.button13.Text = "ออกจากระบบ";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
+            // button26
+            // 
+            this.button26.BackColor = System.Drawing.Color.Chartreuse;
+            this.button26.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button26.Location = new System.Drawing.Point(24, 590);
+            this.button26.Name = "button26";
+            this.button26.Size = new System.Drawing.Size(202, 47);
+            this.button26.TabIndex = 34;
+            this.button26.Text = "เพิ่มสินค้าลงฐานข้อมูล";
+            this.button26.UseVisualStyleBackColor = false;
+            this.button26.Click += new System.EventHandler(this.button26_Click);
             // 
             // pProductBindingSource
             // 
@@ -1636,17 +1664,17 @@
             // 
             this.pOrderBindingSource.DataSource = typeof(ComputerDIY.P_Order);
             // 
-            // button25
+            // button27
             // 
-            this.button25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.button25.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button25.Location = new System.Drawing.Point(659, 11);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(151, 41);
-            this.button25.TabIndex = 61;
-            this.button25.Text = "ค้นหาลูกค้าทั่วไป";
-            this.button25.UseVisualStyleBackColor = false;
-            this.button25.Click += new System.EventHandler(this.button25_Click);
+            this.button27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button27.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button27.Location = new System.Drawing.Point(114, 4);
+            this.button27.Name = "button27";
+            this.button27.Size = new System.Drawing.Size(135, 41);
+            this.button27.TabIndex = 47;
+            this.button27.Text = "สินค้าที่หมด";
+            this.button27.UseVisualStyleBackColor = false;
+            this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // Shop
             // 
@@ -1834,5 +1862,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalPriceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discountDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button27;
     }
 }

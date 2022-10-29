@@ -667,5 +667,33 @@ namespace ComputerDIY
             {
             }
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from pro in context.P_Product
+                             where pro.Amount == 0
+                             select pro;
+                dataGridView3.DataSource = result.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from pro in context.P_Product
+                             where pro.Amount == 0
+                             select pro;
+                pProductBindingSource.DataSource = result.ToList();
+            }
+            catch (Exception)
+            {
+            }
+        }
     }
 }

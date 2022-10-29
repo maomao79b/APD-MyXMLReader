@@ -112,14 +112,15 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label19 = new System.Windows.Forms.Label();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button7 = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.label32 = new System.Windows.Forms.Label();
             this.button12 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button13 = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button14 = new System.Windows.Forms.Button();
             this.pProductBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -133,6 +134,7 @@
             this.typeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.amountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pProductBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.button15 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -144,9 +146,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
-            this.tabPage3.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPromotionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource1)).BeginInit();
@@ -420,6 +422,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage2.Controls.Add(this.button15);
             this.tabPage2.Controls.Add(this.button9);
             this.tabPage2.Controls.Add(this.comboBox1);
             this.tabPage2.Controls.Add(this.label18);
@@ -1029,31 +1032,10 @@
             this.dataGridView5.TabIndex = 45;
             this.dataGridView5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView5_MouseClick);
             // 
-            // tabPage3
-            // 
-            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.tabPage3.Controls.Add(this.button7);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(869, 530);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "ออกจากระบบ";
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(325, 42);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(180, 63);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "ออกจากระบบ";
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.DarkOrange;
+            this.tabPage5.Controls.Add(this.button14);
             this.tabPage5.Controls.Add(this.label32);
             this.tabPage5.Controls.Add(this.button12);
             this.tabPage5.Controls.Add(this.comboBox2);
@@ -1100,9 +1082,9 @@
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button13.Location = new System.Drawing.Point(8, 6);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(100, 41);
+            this.button13.Size = new System.Drawing.Size(130, 41);
             this.button13.TabIndex = 41;
-            this.button13.Text = "ดึงข้อมูล";
+            this.button13.Text = "สินค้าทั้งหมด";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
@@ -1126,6 +1108,40 @@
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(852, 470);
             this.dataGridView3.TabIndex = 40;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.tabPage3.Controls.Add(this.button7);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(869, 530);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "ออกจากระบบ";
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button7.Location = new System.Drawing.Point(325, 42);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(180, 63);
+            this.button7.TabIndex = 0;
+            this.button7.Text = "ออกจากระบบ";
+            this.button7.UseVisualStyleBackColor = false;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button14
+            // 
+            this.button14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button14.Location = new System.Drawing.Point(153, 6);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(135, 41);
+            this.button14.TabIndex = 45;
+            this.button14.Text = "สินค้าที่หมด";
+            this.button14.UseVisualStyleBackColor = false;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // pProductBindingSource
             // 
@@ -1223,6 +1239,16 @@
             // 
             this.pProductBindingSource1.DataSource = typeof(ComputerDIY.P_Product);
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(88, 13);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(132, 23);
+            this.button15.TabIndex = 34;
+            this.button15.Text = "สินค้าที่หมด";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // Goods
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1250,10 +1276,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
-            this.tabPage3.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pPromotionBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pProductBindingSource1)).EndInit();
@@ -1366,6 +1392,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn typeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn amountDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource pProductBindingSource1;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button15;
     }
 }
 

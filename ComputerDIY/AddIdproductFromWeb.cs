@@ -14,12 +14,12 @@ namespace ComputerDIY
 {
     public partial class AddIdproductFromWeb : Form
     {
-        Goods goods;
+        Object goodsAndSales;
         Jack context = new Jack();
-        public AddIdproductFromWeb(Goods goods)
+        public AddIdproductFromWeb(Object goodsAndSales)
         {
             InitializeComponent();
-            this.goods = goods;
+            this.goodsAndSales = goodsAndSales;
         }
 
         private void label1_Click(object sender, EventArgs e)

@@ -437,11 +437,6 @@ namespace ComputerDIY
 
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void label16_Click(object sender, EventArgs e)
         {
 
@@ -656,6 +651,20 @@ namespace ComputerDIY
             catch (Exception)
             {
                 MessageBox.Show("ไม่พบข้อมูล");
+            }
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = from pro in context.P_Product
+                             where pro.Amount == 0
+                             select pro;
+                dataGridView3.DataSource = result.ToList();
+            }
+            catch (Exception)
+            {
             }
         }
 
