@@ -435,7 +435,7 @@ namespace ComputerDIY
                                 }
                                 catch (Exception)
                                 {
-                                    MessageBox.Show("Failed");
+                                    MessageBox.Show("ชำระเงินไม่สำเร็จ");
                                 }
                             }
                         }
@@ -550,7 +550,7 @@ namespace ComputerDIY
                                         }
                                         catch (Exception)
                                         {
-                                            MessageBox.Show("Failed");
+                                            MessageBox.Show("ชำระเงินไม่สำเร็จ");
                                         }
                                     }
                                 }
@@ -752,12 +752,12 @@ namespace ComputerDIY
                                       select em;
                         context.P_Customer.Remove(result2.First());
                         context.SaveChanges();
-                        MessageBox.Show("Remove Success");
+                        MessageBox.Show("ลบสำเร็จ");
                         pCustomerBindingSource.DataSource = context.P_Customer.ToList();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Remove Failed");
+                        MessageBox.Show("ลบไม่สำเร็จ");
                     }
                 }
             }
@@ -782,11 +782,11 @@ namespace ComputerDIY
                         try
                         {
                             context.SaveChanges();
-                            MessageBox.Show("Save Success");
+                            MessageBox.Show("บันทึกสำเร็จ");
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show("Save Failed");
+                            MessageBox.Show("บันทึกไม่สำเร็จ");
                         }
 
                     }

@@ -56,28 +56,35 @@ namespace ComputerDIY
                     }
                     catch (Exception)
                     {
-                        P_Employee em = new P_Employee();
-                        em.Id = Id;
-                        em.Name = textBox_Name.Text;
-                        em.Address = textBox_Address.Text;
-                        em.Phone = textBox_Phone.Text;
-                        em.Email = textBox_Email.Text;
-                        em.Username = textBox2.Text;
-                        em.Password = textBox1.Text;
-                        em.Status = textBox3.Text;
-                        if (pictureBox.Image == null)
+                        try
                         {
-                            em.Image = null;
+                            context.P_Employee.Where(em2 => em2.Email == textBox_Email.Text).First();
+                            MessageBox.Show("Email นี้มีการใช้งานแล้ว");
                         }
-                        else
+                        catch (Exception)
                         {
-                            em.Image = ConvertImageToByteArray(this.path_image);
+                            P_Employee em = new P_Employee();
+                            em.Id = Id;
+                            em.Name = textBox_Name.Text;
+                            em.Address = textBox_Address.Text;
+                            em.Phone = textBox_Phone.Text;
+                            em.Email = textBox_Email.Text;
+                            em.Username = textBox2.Text;
+                            em.Password = textBox1.Text;
+                            em.Status = textBox3.Text;
+                            if (pictureBox.Image == null)
+                            {
+                                em.Image = null;
+                            }
+                            else
+                            {
+                                em.Image = ConvertImageToByteArray(this.path_image);
+                            }
+                            context.P_Employee.Add(em);
+                            context.SaveChanges();
+                            MessageBox.Show("เพิ่มสำเร็จ");
+                            this.Close();
                         }
-                        Console.WriteLine("HiBor");
-                        context.P_Employee.Add(em);
-                        context.SaveChanges();
-                        MessageBox.Show("Add Success");
-                        this.Close();
                     }
 
                 }

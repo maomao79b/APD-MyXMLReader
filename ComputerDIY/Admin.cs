@@ -28,6 +28,7 @@ namespace ComputerDIY
 
         private void Admin_Load(object sender, EventArgs e)
         {
+            this.dateTimePicker1.Value = DateTime.Now;
             try
             {
                 var result = context.P_Product.ToList();
@@ -127,8 +128,16 @@ namespace ComputerDIY
                         }
                         catch (Exception)
                         {
-                            context.SaveChanges();
-                            MessageBox.Show("Add Success");
+                            try
+                            {
+                                context.P_Employee.Where(em2 => em2.Email == textBox5.Text && em2.Id != Id).First();
+                                MessageBox.Show("Email นี้มีการใช้งานแล้ว");
+                            }
+                            catch (Exception)
+                            {
+                                context.SaveChanges();
+                                MessageBox.Show("บันทึกสำเร็จ");
+                            }
                         }
 
                     }
@@ -224,12 +233,12 @@ namespace ComputerDIY
                                      select em;
                         context.P_Employee.Remove(result2.First());
                         context.SaveChanges();
-                        MessageBox.Show("Remove Success");
+                        MessageBox.Show("ลบสำเร็จ");
                         pEmployeeBindingSource.DataSource = context.P_Employee.ToList();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Remove Failed");
+                        MessageBox.Show("ลบไม่สำเร็จ");
                     }
                 }
             }
@@ -287,12 +296,12 @@ namespace ComputerDIY
                                      select em;
                         context.P_Customer.Remove(result2.First());
                         context.SaveChanges();
-                        MessageBox.Show("Remove Success");
+                        MessageBox.Show("ลบสำเร็จ");
                         pCustomerBindingSource.DataSource = context.P_Customer.ToList();
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Remove Failed");
+                        MessageBox.Show("ลบไม่สำเร็จ");
                     }
                 }
             }
@@ -317,11 +326,11 @@ namespace ComputerDIY
                         try
                         {
                             context.SaveChanges();
-                            MessageBox.Show("Save Success");
+                            MessageBox.Show("บันทึกสำเร็จ");
                         }
                         catch (Exception)
                         {
-                            MessageBox.Show("Save Failed");
+                            MessageBox.Show("บันทึกไม่สำเร็จ");
                         }
 
                     }
@@ -417,10 +426,10 @@ namespace ComputerDIY
             }
             else
             {
+
+                var date = DateTime.Today.Subtract(TimeSpan.FromDays((double)numericUpDown1.Value));
                 var result = from order in context.P_Order
-                             where order.OrderDate.Year == DateTime.Now.Year &&
-                             order.OrderDate.Month == DateTime.Now.Month &&
-                             order.OrderDate.Day >= (DateTime.Now.Day - numericUpDown1.Value)
+                             where order.OrderDate >= date
                              select order;
                 dataGridView4.DataSource = result.ToList();
                 decimal total = 0;
@@ -429,6 +438,7 @@ namespace ComputerDIY
                     total += item.TotalPrice;
                 }
                 label12.Text = total.ToString();
+                //Console.WriteLine(date);
             }
         }
 
